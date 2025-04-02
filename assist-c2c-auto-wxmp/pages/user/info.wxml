@@ -1,0 +1,48 @@
+<view class="content">
+  <scroll-view scroll-y="true" show-scrollbar="true" enhanced="true" class="input-dialog">
+    <view class="val-input">
+      <view class="meta">手机号</view>
+      <input bindinput="bindMobileChange" type="number" value="{{userInfo.mobile}}"></input>
+    </view>
+    <view class="val-input">
+      <view class="meta">姓名</view>
+      <input bindinput="bindRealNameChange" type="text" value="{{userInfo.realName}}"></input>
+    </view>
+    <view class="val-input">
+      <view class="meta">性别</view>
+      <picker bindchange="bindGenderChange" value="{{gindex}}" range="{{genderTypes}}">
+        <view class="picker">
+          {{genderTypes[gindex]}}
+        </view>
+      </picker>
+    </view>
+    <view class="val-input">
+      <view class="meta">年龄</view>
+      <input bindinput="bindAgeChange" type="number" min="0" value="{{userInfo.age}}"></input>
+    </view>
+    <!-- <view class="val-input">
+      <view class="meta">个人简介</view>
+      <input bindinput="bindShortDescChange" type="text" value="{{userInfo.shortDesc}}"></input>
+    </view> -->
+    <view class="val-input">
+      <view class="meta">
+        <text>所在位置</text>
+      </view>
+      <view class="val-location">
+        <text wx:if="{{userInfo.location}}">{{userInfo.location}}</text>
+        <text wx:else>请点击按钮获取定位</text>
+        <van-button color="#88C9A0" icon="location" bindtap="getCurrentPositioning" size="small" style="float: right;">刷新位置</van-button>
+      </view>
+    </view>
+    <view class="val-input">
+      <view class="meta">头像</view>
+      <image class="new-img" src="{{profileImg}}" wx:if="{{profileImg!=null && profileImg!=''}}"></image>
+      <image class="new-img" src="{{userInfo.pic==null?'http://129.211.222.131:18080/images/20230309132054typ1q.jpg':userInfo.pic}}" wx:else></image>
+      <van-button color="#88C9A0" icon="photo" bindtap="chooseImg" size="small">更换头像</van-button>
+      </view>
+    <view class="btns">
+      <van-button color="#74B08D" icon="share" bindtap="publishUpdate">更新信息</van-button>
+    </view>
+  </scroll-view>
+  <van-dialog id="van-dialog" />
+</view>

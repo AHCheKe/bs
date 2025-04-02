@@ -1,0 +1,101 @@
+.blog-detail{
+  padding: 0 2%;
+  min-height: 100vh;
+}
+.blog-title{
+  font-size: 16px;
+  color: #666;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.item .remark{
+  font-size: 14px;
+  color: #666;
+  line-height: 24px;
+  margin-bottom: 10px;
+  padding: 2px 18px;
+}
+.item .profile{
+  text-align: center;
+}
+.item .profile .img{
+  width: 150px;
+  height: 150px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 8px #88C9A0;
+}
+.profile .img-container{
+  padding: 10px 0;
+}
+.profile .aname{
+  color: #666;
+}
+.profile .aname .h2{
+  font-size: 20px;
+  padding: 6px 0;
+}
+.blog-detail .item{
+  padding-top: 10px;
+}
+.auth-view .nickname{
+  color: #fd715e;
+  padding-right: 8px;
+  font-size: 14px;
+  padding-top: 4px;
+  margin-bottom: 6px;
+}
+.blog-detail .auth-view{
+  font-size: 14px;
+  color: #666;
+  margin: 8px 0;
+}
+.blog-detail .desc-p{
+  color: #999;
+  font-size: 14px;
+  line-height: 22px;
+}
+.img-box{
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+.img-box .box{
+  width: 235rpx;
+  text-align: center;
+}
+.img-box .pet-img{
+  width: 92%;
+  height: 100px;
+}
+.profile .nickname{
+  color: #f90;
+  padding-right: 8px;
+}
+.date-txt{
+  font-size: 14px;
+  color: #888;
+  padding-right: 8px;
+}
+.note-list .item .tags{
+  margin-bottom: 5px;
+}
+.tags van-tag{
+  margin-right: 8px;
+}
+.tdate{
+  color: #666;
+  font-size: small;
+}
+.mattr{
+  padding: 0 4px;
+}
+.profile .tags{
+  margin: 8px 0;
+}
+.btns{
+  text-align: center;
+  position: fixed;
+  bottom: 10vh;
+  left: 0;
+  right: 0;
+}

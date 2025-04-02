@@ -1,0 +1,21 @@
+/* pages/user/fav/fav-list.wxss */
+.title{
+  color: #333;
+}
+.title .meta{
+  color: #888;
+}
+.status{
+  float: right;
+}
+.price{
+  color: #fd715e;
+}
+.cny{
+  color: #888;
+  font-size: 14px;
+  padding-left: 10px;
+}
+.content .btn{
+  float: right;
+}

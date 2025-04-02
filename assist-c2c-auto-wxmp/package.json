@@ -1,0 +1,17 @@
+{
+  "name": "陪诊平台小程序",
+  "version": "1.0.0",
+  "description": "陪诊平台小程序",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "xujinnan",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/weapp": "^1.11.1"
+  },
+  "keywords": [
+    "陪诊平台小程序"
+  ]
+}

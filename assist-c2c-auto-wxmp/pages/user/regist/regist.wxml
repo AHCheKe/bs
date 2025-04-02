@@ -1,0 +1,83 @@
+<!--miniprogram/pages/login/login.wxml-->
+<view  class="user-file">
+  <view class="val-input">
+    <view class="label">
+      <view class="meta">请选择您的身份</view>
+    </view>
+    <radio-group bindchange="bindRoleChange">
+      <block wx:for="{{roleItems}}" wx:key="value">
+        <label class="weui-cell weui-check__label" style="margin-right: 10px;">
+          <radio value="{{item.value}}" checked="{{item.checked}}" color="#887bff"/><text>{{item.name}}</text>
+        </label>
+      </block>
+    </radio-group>
+  </view>
+  <block wx:if="{{role==2}}">
+    <view class="val-input">
+      <view class="meta">真实姓名</view>
+      <input placeholder="" bindinput="inputRealName"></input>
+    </view>
+    <view class="val-input">
+      <view class="meta">身份证号</view>
+      <input placeholder="陪诊师需要实名制" bindinput="bindIdNoChange"></input>
+    </view>
+    <view class="val-input">
+      <view class="meta">手机号</view>
+      <input placeholder="" bindinput="inputMobile"></input>
+    </view>
+    <view class="val-input">
+      <view class="meta">性别</view>
+      <picker bindchange="bindGenderChange" value="{{gindex}}" range="{{genderTypes}}">
+        <view class="picker">
+          {{genderTypes[gindex]}}
+        </view>
+      </picker>
+    </view>
+    <view class="val-input">
+      <view class="meta">年龄</view>
+      <input bindinput="bindAgeChange" type="number" min="0" value="{{age}}"></input>
+    </view>
+    <view class="val-input">
+      <view class="meta">
+        <text>所在位置</text>
+      </view>
+      <view class="val-location">
+        <text>{{location}}</text>
+        <van-button color="#5c9dba" icon="location" bindtap="getCurrentPositioning" size="small" style="float: right;">刷新位置</van-button>
+      </view>
+    </view>
+    <view class="val-input">
+      <view class="meta">申请理由</view>
+      <textarea bindinput="inputAppContent" maxlength="-1"></textarea>
+    </view>
+    <view class="val-input">
+      <view class="label">
+        <text>申请标签</text>
+        <view class="desc" style="padding: 0;">选择与您的技能最相符的标签，系统将为您匹配合适的订单。</view>
+      </view>
+      <view class="page-section page-section-gap">
+        <checkbox-group bindchange="checkboxChange">
+          <label class="checkbox" wx:for="{{serviceTagList}}" wx:key="value">
+            <checkbox value="{{item.tagId}}" color="#fd715e" checked="{{item.isSelected}}"/><text>{{item.tagName}}</text>
+          </label>
+        </checkbox-group>
+      </view>
+    </view>
+    <view class="val-input">
+      <view class="meta">附件图片(身份证或相关资格证书)</view>
+      <view class="img-list">
+        <view wx:if="{{petImg.length!=0}}" class="upload-img" wx:for="{{uploadImgs}}" wx:key="id">
+          <image mode="aspectFit" class="pic" src="{{item}}"></image>
+          <image class="del-btn" src="/images/delete.png" data-idx="{{index}}" bindtap="deletePic"></image>
+        </view>
+        <view class="upload-img" bindtap="chooseImg" wx:if="{{uploadImgs.length<9}}">
+          <image src="/images/camera.png" mode="aspectFit" class="camera-icon"></image>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="btns">
+    <van-button icon="passed" color="#fd715e" bindtap="onRegist" wx:if="{{role==1}}">确定</van-button>
+    <van-button icon="passed" color="#fd715e" bindtap="onRegist" wx:if="{{role==2}}">提交申请</van-button>
+  </view>
+</view>

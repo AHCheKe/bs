@@ -1,0 +1,54 @@
+<!--pages/user/profile.wxml-->
+<view class="content">
+  <view class="profile">
+    <view class="item">
+      <image class="icon-l profile-img" src="{{userInfo.pic==null||userInfo.pic==''?'http://129.211.222.131:18080/images/20230309132054typ1q.jpg':userInfo.pic}}"></image>
+      <view class="nickname">
+        {{userInfo.nickName}}
+      </view>
+      <view class="count">
+        <text wx:if="{{userInfo.role==3}}">陪诊师资质审核中</text>
+        <text wx:elif="{{userInfo.role==3&&userInfo.status==2}}"><text style="color: #dc346e;">陪诊师资质审核不通过</text></text>
+        <view wx:if="{{userInfo.role==2}}">
+          <van-icon name="bookmark" class="vcert"/><text style="color: #00b890;">认证陪诊师</text>
+        </view>
+      </view>
+      <view class="count">
+        <text wx:if="{{userInfo.gender}}">{{userInfo.gender}}</text>
+        <text wx:if="{{userInfo.age}}"> {{userInfo.age}}岁</text>
+      </view>
+      <view class="count">
+        <!-- <text wx:if="{{userInfo.shortDesc==null}}">暂无个人简介</text> -->
+        <text wx:if="{{userInfo.location!=null}}">{{userInfo.location}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="profile" style="background-color: #00b89000;">
+    <van-cell icon="todo-list-o" is-link link-type="switchTab" url="/pages/book/myorders" wx:if="{{userInfo.role>1}}">
+      <view slot="title"><view class="van-cell-text">我的陪诊订单</view></view>
+    </van-cell>
+    <van-cell icon="like-o" is-link link-type="navigateTo" url="/pages/user/history/feedback-list">
+      <view slot="title"><view class="van-cell-text">历史评价</view></view>
+    </van-cell>
+		<van-cell icon="service-o" is-link link-type="navigateTo" url="/pages/user/online-service/chat">
+      <view slot="title"><view class="van-cell-text">在线客服</view></view>
+    </van-cell>
+    <van-cell icon="edit" is-link link-type="navigateTo" url="/pages/user/info">
+      <view slot="title"><view class="van-cell-text">修改个人信息</view></view>
+    </van-cell>
+    <van-cell icon="bookmark-o" is-link link-type="navigateTo" url="/pages/user/mytags" wx:if="{{userInfo.role==2}}">
+      <view slot="title"><view class="van-cell-text">性格标签管理</view></view>
+    </van-cell>
+    <van-cell wx:if="{{userInfo.role==3}}" icon="bookmark-o" is-link link-type="navigateTo" url="/pages/user/info">
+      <view slot="title"><view class="van-cell-text">陪诊师申请记录</view></view>
+    </van-cell>
+    <van-cell icon="close" is-link bindtap="onLogout" wx:if="{{!notLogin}}">
+      <view slot="title"><view class="van-cell-text">退出登录</view></view>
+    </van-cell>
+  </view>
+
+  <view class="logout-btn" wx:if="{{!notLogin}}">
+    <!-- <van-button color="#fd715e" icon="edit" bind:click="toEditPage">修改信息</van-button> -->
+    <!-- <van-button color="#fd715e" icon="close" bind:click="onLogout">退出登录</van-button> -->
+  </view>
+</view>

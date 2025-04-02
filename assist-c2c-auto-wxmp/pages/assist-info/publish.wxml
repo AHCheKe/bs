@@ -1,0 +1,204 @@
+<!--miniprogram/pages/select_role/role.wxml-->
+<wxs src="../../utils/date.wxs" module="filter" />
+<view  class="user-file">
+  <!-- <view class="val-input">
+    <view class="label">
+      <text>需求类别</text>
+      <text class="desc">请选择你需要的服务类型</text>
+    </view>
+    <picker bindchange="bindServiceTypeChange" value="{{sindex}}" range="{{serviceTypeList}}">
+      <view class="picker">
+        {{service.serviceType}}
+      </view>
+    </picker>
+  </view> -->
+  <!-- <view class="val-input">
+    <view class="label"><text class="red-dot">*</text>所在城市</view>
+    <view class="cdate" bindtap="onChangeCity">{{service.city}}</view>
+  </view> -->
+  <view class="val-input">
+    <view class="label">
+      <text>陪诊师选择模式</text>
+      <view class="desc" style="padding: 0;">可以指定陪诊师或由系统为您自动匹配陪诊师</view>
+    </view>
+    <radio-group bindchange="bindAllocationChange">
+      <label class="weui-cell weui-check__label" wx:for="{{allocationItems}}" wx:key="value">
+        <view class="pickup-rdo">
+          <radio value="{{item.value}}" checked="{{item.checked}}" color="#88C9A0"/>
+          <text>{{item.name}}</text>
+        </view>
+      </label>
+    </radio-group>
+  </view>
+  <!-- <view class="val-input">
+    <view class="label"><text class="red-dot">*</text>就诊医院</view>
+    <input bindinput="bindHospitalInput" type="text" placeholder="请输入您要就诊的医院"></input>
+  </view> -->
+	<view class="val-input">
+    <view class="label">
+      <text>就诊医院</text>
+      <text class="desc">请选择你要就诊的医院</text>
+    </view>
+    <picker bindchange="bindHospitalChange" value="{{hindex}}" range="{{hospitalList}}" range-key="hospitalName">
+      <view class="picker">
+        {{hospitalList[hindex].hospitalName}}
+      </view>
+    </picker>
+  </view>
+  <view class="val-input">
+    <view class="label">
+      <text>服务类别</text>
+      <text class="desc">请选择你需要的服务类型</text>
+    </view>
+    <picker bindchange="bindServiceTypeChange" value="{{sindex}}" range="{{serviceTypeList}}" range-key="serviceName">
+      <view class="picker stype">
+        {{serviceTypeList[sindex].serviceName}}
+        <van-icon name="arrow" style="float: right;"/>
+      </view>
+    </picker>
+    <view style="font-size: 14px;">陪诊费用：￥<text style="color: #fa5151;">{{filter.toFixed1(serviceTypeList[sindex].price)}}</text></view>
+    <view class="tip">
+      <view class="tcontent">{{serviceTypeList[sindex].serviceDesc}}</view>
+      <!-- <view class="head" wx:if="{{serviceTypeList[sindex].serviceNotice}}">费用说明：</view>
+      <view class="tcontent">{{serviceTypeList[sindex].serviceNotice}}</view> -->
+    </view>
+  </view>
+  <!-- <view class="val-input">
+    <view class="label">
+      <text class="red-dot">*</text><text>陪诊费用</text>
+      <text class="desc">合理的费用能提高陪诊师的接单率</text>
+    </view>
+    <input bindinput="bindPriceInput" type="text" placeholder="请输入您希望支付的陪诊费用"></input>
+  </view> -->
+  <view class="val-input">
+    <view class="label"><text class="red-dot">*</text>就诊时间</view>
+    <view class="cdate" bindtap="onShowPopup">{{filter.format(service.serviceDate, 'YY-MM-DD hh:mm')}}</view>
+  </view>
+  <block wx:if="{{service.selectModel==0}}">
+    <view class="val-input">
+      <view class="label">
+        <text>性别偏好</text>
+      </view>
+      <radio-group bindchange="bindGenderRangeChange">
+        <label class="weui-cell weui-check__label" wx:for="{{genderRangeItems}}" wx:key="value">
+          <view class="pickup-rdo">
+            <radio value="{{item.value}}" checked="{{item.checked}}" color="#88C9A0"/>
+            <text>{{item.name}}</text>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+    <view class="val-input">
+      <view class="label">
+        <text>年龄偏好</text>
+      </view>
+      <radio-group bindchange="bindAgeRangeChange">
+        <label class="weui-cell weui-check__label" wx:for="{{ageRangeItems}}" wx:key="value">
+          <view class="pickup-rdo">
+            <radio value="{{item.value}}" checked="{{item.checked}}" color="#88C9A0"/>
+            <text>{{item.name}}</text>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+    <view class="val-input">
+      <view class="label">
+        <text>性格偏好</text>
+        <view class="desc" style="padding: 0;">选择最符合您需求的标签，系统将为您匹配最佳陪诊师</view>
+      </view>
+      <radio-group bindchange="bindTagChange">
+        <label class="weui-cell weui-check__label">
+          <view class="pickup-rdo">
+            <radio value="-1" color="#88C9A0" checked="{{true}}"/>
+            <text>无特殊要求</text>
+          </view>
+        </label>
+        <label class="weui-cell weui-check__label" wx:for="{{serviceTagList}}" wx:key="value">
+          <view class="pickup-rdo">
+            <radio value="{{item.tagName}}" color="#88C9A0"/>
+            <text>{{item.tagName}}</text>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+  </block>
+  <block wx:if="{{service.selectModel==1}}">
+    <!--陪诊师列表-->
+    <view class="val-input">
+      <view class="label">
+        <text class="red-dot">*</text><text>指定陪诊师</text>
+        <text class="desc">请浏览陪诊师列表并选择</text>
+      </view>
+      <view class="val-location">
+        <text>{{allocateName}}</text>
+        <van-button color="#88C9A0" icon="friends-o" bindtap="showAssistants" size="small" style="float: right;">选择陪诊师</van-button>
+      </view>
+    </view>
+  </block>
+  <view class="val-input">
+    <view class="label">
+      <text class="red-dot">*</text><text>我的位置</text>
+      <text class="desc">为您匹配附近的陪诊师</text>
+    </view>
+    <view class="val-location">
+      <text>{{service.location}}</text>
+      <van-button color="#88C9A0" icon="location" bindtap="getCurrentPositioning" size="small" style="float: right;">获取位置</van-button>
+    </view>
+  </view>
+  <view class="val-input">
+    <view class="label">
+      <text>是否接送</text>
+      <text class="desc">是否需要上门接送</text>
+    </view>
+    <radio-group bindchange="bindPickupChange">
+      <label class="weui-cell weui-check__label" wx:for="{{pickupItems}}" wx:key="value">
+        <view class="pickup-rdo">
+          <radio value="{{item.value}}" checked="{{item.checked}}" color="#88C9A0"/>
+          <text>{{item.name}}</text>
+        </view>
+      </label>
+    </radio-group>
+  </view>
+  <view class="val-input">
+    <view class="label">
+      <text><text class="red-dot">*</text>联系电话</text>
+      <text class="desc">用于陪诊师与您联系</text>
+    </view>
+    <input bindinput="bindMobileInput" type="number" placeholder="请输入您的手机号"></input>
+  </view>
+  <view class="val-input">
+    <view class="label">详细需求</view>
+    <textarea bindinput="bindFieldRemarkInput" placeholder="请输入您的具体需求，如：需要轮椅/能够英语沟通" maxlength="-1"/>
+  </view>
+  <!-- <view class="val-input">
+    <view class="label">上传图片</view>
+    <view class="img-list">
+      <view wx:if="{{petImg.length!=0}}" class="upload-img" wx:for="{{uploadImgs}}" wx:key="id">
+        <image mode="aspectFit" class="pic" src="{{item}}"></image>
+        <image class="del-btn" src="/images/delete.png" data-idx="{{index}}" bindtap="deletePic"></image>
+      </view>
+      <view class="upload-img" bindtap="chooseImg" wx:if="{{uploadImgs.length<9}}">
+        <image src="/images/camera.png" mode="aspectFit" class="camera-icon"></image>
+      </view>
+    </view>
+  </view> -->
+  <van-popup
+    show="{{ showPopup }}"
+    position="bottom"
+    custom-style="height: 55%;"
+    bind:close="onClose"
+  >
+    <view style="padding: 10px;">请选择日期与时间</view>
+    <van-datetime-picker
+      type="datetime"
+      value="{{ service.serviceDate }}"
+      min-date="{{defaultDate}}"
+      bind:input="onDateSelect"
+      bind:confirm="onClose"
+      bind:cancel="onClose"
+    />
+  </van-popup>
+</view>
+<view class="bottom-btn">
+  <van-button color="#88C9A0" icon="share" bindtap="publishForm">提交</van-button>
+</view>

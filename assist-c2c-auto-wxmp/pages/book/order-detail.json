@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-field": "@vant/weapp/field/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-stepper": "@vant/weapp/stepper/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-rate": "@vant/weapp/rate/index"
+  },
+  "navigationBarTitleText": "预约详情"
+}

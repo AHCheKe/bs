@@ -1,0 +1,30 @@
+<wxs src="../../../utils/date.wxs" module="filter" />
+<view class="fav-list">
+  <van-cell label="" center wx:for="{{dataList.records}}" wx:key="campaignId" bind:click="toBlogDetail" data-sid="{{item.serviceId}}">
+    <view slot="title">
+      <view class="van-cell-text title">
+        <view style="font-size: 16px;">
+          <text>{{item.service.hospital}}</text>
+          <view class="status">
+            <van-tag color="#887bff" wx:if="{{item.status==0}}" round size="medium">待确认</van-tag>
+            <van-tag color="#41a8a8" wx:if="{{item.status==1}}" round size="medium">抢单成功</van-tag>
+            <van-tag color="#888888" wx:if="{{item.status==-1}}" round size="medium">抢单失败</van-tag>
+          </view>
+        </view>
+        <view><text class="meta">评价时间：</text>{{filter.format(item.feedbackTime, 'YY-MM-DD hh:mm')}}</view>
+				<view><text class="meta">就诊人：</text>{{item.user.nickName}}</view>
+				<view><text class="meta">陪诊师：</text>{{item.assistant.nickName}}</view>
+        <view>
+					<text class="meta">评价内容：</text>{{item.content}}
+				</view>
+				<view>
+					<text class="meta">评价星级：</text>
+					<van-rate value="{{ item.rate }}" readonly void-icon="like-o" icon="like" color="#88c9a0"/>
+				</view>
+      </view>
+      <!-- <van-button icon="star-o" color="#887bff">取消</van-button> -->
+    </view>
+  </van-cell>
+	<view class="no-more" wx:if="{{dataList.totalrecord==0}}">-- 无数据 --</view>
+	<view class="no-more" wx:if="{{noMore}}">-- 已全部加载 --</view>
+</view>

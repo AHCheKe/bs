@@ -1,0 +1,55 @@
+<wxs src="../../utils/date.wxs" module="filter" />
+<view  class="book-detail">
+  <view class="block block2">
+    <view class="item">
+      <text class="meta">就诊医院</text>
+      <text class="value hospital">{{serviceInfo.hospital}}</text>
+    </view>
+    <view class="item" wx:if="{{serviceInfo.dept}}">
+      <text class="meta">科室</text>
+      <text class="value">{{serviceInfo.dept}}</text>
+    </view>
+    <view class="item">
+      <text class="meta">就诊时间</text>
+      <text class="value time">{{filter.format(serviceInfo.serviceDate, 'YY-MM-DD hh:mm')}}</text>
+    </view>
+    <view class="item">
+      <text class="meta">需求类别</text>
+      <view class="value">
+        <van-tag color="#887bff" round size="medium">{{serviceInfo.serviceType}}</van-tag>
+      </view>
+    </view>
+    <view class="item">
+      <text class="meta">接送需求</text>
+      <text class="value" wx:if="{{serviceInfo.needPickup==0}}">不需要接送</text>
+      <text class="value pck" wx:if="{{serviceInfo.needPickup==1}}">需要接送</text>
+    </view>
+    <view class="item">
+      <text class="meta">陪诊费用</text>
+      <text class="value">￥<text class="price">{{filter.toFixed1(serviceInfo.price)}}</text></text>
+    </view>
+    <view class="item">
+      <text class="meta">需求详情</text>
+      <view class="remark">{{serviceInfo.content}}</view>
+    </view>
+  </view>
+  <view class="tips">
+    <view class="title">服务流程</view>
+    <view class="content">
+      <view class="p">
+        1、陪诊师提交接单意愿后，由客人决定选择哪一位陪诊师提供服务，最终接单结果会在“我的抢单”中显示状态。
+      </view>
+      <view class="p">
+        2、若状态为“待陪诊”则表示您成功抢单，系统将会向您推送客人的联系方式，请与客人联系约定具体的陪诊时间与地点。
+      </view>
+      <view class="p">
+        3、陪诊结束后，请扫描客人的二维码，以结束本次订单。扫码完成后，系统将会把陪诊费用转到您的账号。
+      </view>
+    </view>
+  </view>
+  
+  <view class="btns" wx:if="{{serviceInfo.status==0&&userInfo.role==2}}">
+    <van-button icon="passed" color="#fd715e" bindtap="onSignUp">我要抢单</van-button>
+  </view>
+  <van-dialog id="van-dialog" />
+</view>

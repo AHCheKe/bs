@@ -1,0 +1,267 @@
+/* pages/subPackages/other/cardiacultrasound/index.wxss */
+page{
+  padding-bottom: 67px;
+}
+ 
+.flex { display: -webkit-box; display: -ms-flexbox; display: flex; }
+ 
+ .items-center { -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+ .justify-between { -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+ 
+.ml-20 {
+  margin-left: 40rpx;
+}
+ 
+.mt-10 {
+  margin-top: 20rpx;
+}
+ 
+.flex-1 {
+  flex: 1;
+}
+.mb-10 {
+  margin-bottom: 20rpx;
+}
+.ml-10 {
+    margin-left: 20rpx;
+  }
+.mr-10 {
+  margin-right: 20rpx;
+}
+ 
+.dg {
+  display: grid;
+}
+ 
+.nav-Searc {
+  height: 150rpx;
+  background-color: #f4f4f4;
+}
+ 
+/* 搜索框 */
+.search-bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0rpx 30rpx 0rpx 30rpx;
+}
+ 
+.search-bar-form {
+  flex: 1;
+  position: relative;
+  border-radius: 32rpx;
+  background: #fff;
+}
+ 
+.search-bar-box {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  height: 64rpx;
+  z-index: 1;
+}
+ 
+.search-bar-input {
+  line-height: normal;
+  width: 100%;
+  padding-left: 20rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+ 
+.phcolor {
+  font-size: 30rpx;
+}
+ 
+.icon-clear {
+  height: 38rpx;
+}
+ 
+.search-bar-label {
+  height: 64rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  border-radius: 32rpx;
+  color: #ccc;
+  background: #fff;
+}
+ 
+.icon-search {
+  position: relative;
+  height: 26rpx;
+  margin-right: 20rpx;
+  font-size: inherit;
+}
+ 
+.search-bar-text {
+  font-size: 30rpx;
+  line-height: 32rpx;
+}
+ 
+.cancel-btn {
+  padding-left: 30rpx;
+}
+ 
+.search-result::before {
+  display: none;
+}
+ 
+.search-result::after {
+  display: none;
+}
+ 
+.tui-list-cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+ 
+.tui-list-cell-hover {
+  background-color: #eee !important;
+}
+ 
+.tui-list-cell-navigate {
+  width: 100%;
+  position: relative;
+  padding: 30rpx 0 30rpx 30rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+ 
+.tui-list-cell-navigate::after {
+  content: '';
+  position: absolute;
+  border-bottom: 1rpx solid #eaeef1;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  bottom: 0;
+  right: 0;
+  left: 30rpx;
+}
+ 
+ 
+/* 侧边 abcd 导航栏 */
+.van-index-bar__sidebar {
+  margin-top: 90rpx;
+}
+ 
+.van-index-anchor {
+  background: #f2f5f7 !important;
+}
+
+.top_back {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  overflow: hidden;
+  z-index: 1;
+  left: 0;
+  top: 0;
+ 
+  
+}
+.navigate {
+  padding-left: 40rpx;
+  padding-top: 20rpx;
+  font-size: 40rpx;
+}
+ 
+.barren {
+  position: relative;
+ 
+  
+}
+.banner-title {
+  border-radius: 100rpx;
+  position: relative;
+  width: 706rpx;
+  height: 144rpx;
+  line-height: 144rpx;
+  background-color: #fff;
+  position: absolute;
+  bottom: -15rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+
+  
+}
+.banner-title>view {
+  color: #FFF;
+  border-radius: 50%;
+  width: 144rpx;
+  height: 144rpx;
+  line-height: 144rpx;
+  background: linear-gradient(188deg, #FF8A55 0%, #FF8451 27%, #FF5D33 100%);
+  position: absolute;
+  bottom: 0;
+  right: 0%;
+}
+
+.content {
+  min-height: 959px;
+  background-color: #E3EDF7;
+  margin: 20rpx;
+  margin-top: 40rpx;
+  border-radius: 40rpx;
+  padding: 34rpx;
+}
+ 
+.doctorimg {
+  position: relative;
+  width: 700rpx;
+  height: 600rpx;
+}
+.doctorimg image {
+  position: absolute;
+  left: -30rpx;
+  width: 100%;
+  height: 100%;
+}
+
+.region {
+  width: 646rpx;
+  text-align: center;
+  height: 244rpx;
+  background: #FFF5F0;
+  border-radius: 28rpx;
+}
+ 
+.x-city-hot {
+  grid-template-columns: repeat(4, 1fr);
+}
+ 
+.x-city-hot-item {
+  width: 74px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  margin-top: 8px;
+  border-radius: 14px;
+  font-size: 14px;
+  color: #333;
+  border: 1px solid #ccc;
+}
+.confirm-btn{
+  position: fixed;
+  bottom: 40px;
+  width: 300rpx;
+  background-color: #88C9A0;
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 18px;
+  left: 225rpx;
+}

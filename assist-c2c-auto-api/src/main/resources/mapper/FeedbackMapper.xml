@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.assist.dao.mapper.FeedbackMapper">
+  <resultMap id="BaseResultMap" type="com.assist.dao.model.Feedback">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="feedback_id" jdbcType="INTEGER" property="feedbackId" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="service_id" jdbcType="INTEGER" property="serviceId" />
+    <result column="feedback_time" jdbcType="TIMESTAMP" property="feedbackTime" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="assistant_id" jdbcType="INTEGER" property="assistantId" />
+    <result column="rate" jdbcType="INTEGER" property="rate" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+  </resultMap>
+</mapper>

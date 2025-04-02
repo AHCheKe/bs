@@ -1,0 +1,84 @@
+/* pages/pet/list.wxss */
+.tags .van-tag{
+  margin-right: 6px;
+}
+.main-view{
+  padding-bottom: 10vh;
+}
+.main-view .search .location{
+  color: #4A5568;
+}
+.main-view .search van-icon{
+  color: #4A5568;
+  font-size: 18px;
+}
+.main-view .search{
+  background-color: #FAFBFD;
+  height: 38px;
+  line-height: 38px;
+  position: relative;
+}
+.search .publish-btn{
+  position: absolute;
+  right: 18rpx;
+  top: 2px;
+  color: #FAFBFD;
+  font-size: 14px;
+  background-color: #88C9A0;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 8px;
+  border-radius: 4px;
+}
+.swiper{
+  height: 200px;
+}
+.swiper swiper{
+  height: 200px;
+}
+.swiper .swiper-item{
+  width: 750rpx;
+  height: 200px;
+}
+.swiper .swiper-item image{
+  width: 750rpx;
+  height: 200px;
+}
+.stype-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+.stype-list .sitem{
+  width: 33%;
+  background-size: 95%;
+  background-image: url(http://129.211.222.131:18080/images/20250117/134459f8c7p.jpg);
+  height: 35px;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 10px 0px;
+}
+.stype-list .ty2{
+  background-image: url(http://129.211.222.131:18080/images/20250117/1356179j71d.jpg);
+}
+.stype-list .ty3{
+  background-image: url(http://129.211.222.131:18080/images/20250117/135617ovmiq.jpg);
+}
+.stype-list .ty4{
+  background-image: url(http://129.211.222.131:18080/images/20250117/140442o825t.jpg);
+}
+.stype-list .item-txt{
+  line-height: 35px;
+  text-align: right;
+  padding-right: 20px;
+  font-size: 14px;
+}
+.notice{
+  margin-top: 10px;
+  border-top: 1px solid #ccc;
+}
+.notice .btime{
+  color: #666;
+  font-size: 13px;
+}

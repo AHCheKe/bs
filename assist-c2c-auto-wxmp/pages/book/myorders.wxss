@@ -1,0 +1,31 @@
+.service-time{
+  font-size: 12px;
+  color: #41a594;
+  width: 400rpx;
+}
+.service-time .meta{
+  color: #888;
+}
+.van-cell-text{
+  width: 630rpx;
+}
+.ft16{
+  font-size: 16px;
+  padding-right: 8px;
+}
+.service-time{
+  font-size: 14px;
+}
+.ainfo{
+  margin: 3px 0;
+  color: #666;
+}
+.ainfo .aname{
+  font-weight: bold;
+}
+.ostatus{
+  float: right;
+}
+.ainfo .aname2{
+  padding-right: 8px;
+}

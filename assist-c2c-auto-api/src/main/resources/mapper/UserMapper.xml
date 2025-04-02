@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.assist.dao.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.assist.dao.model.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="role" jdbcType="INTEGER" property="role" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="id_no" jdbcType="VARCHAR" property="idNo" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="assist_desc" jdbcType="VARCHAR" property="assistDesc" />
+    <result column="rate" jdbcType="DOUBLE" property="rate" />
+    <result column="total_service" jdbcType="INTEGER" property="totalService" />
+    <result column="tags" jdbcType="VARCHAR" property="tags" />
+    <result column="lat" jdbcType="VARCHAR" property="lat" />
+    <result column="lng" jdbcType="VARCHAR" property="lng" />
+  </resultMap>
+
+  <select id="selectUserById" resultMap="BaseResultMap">
+    select * from user u where u.user_id=#{userId}
+  </select>
+
+  <select id="selectAllValidateAssistant" resultMap="BaseResultMap">
+    select u.* from user u where u.role=2
+  </select>
+
+  <select id="selectTagModifyUsers" resultMap="BaseResultMap">
+    select u.* from user u where u.user_id IN(
+        select distinct ut.user_id from user_tag ut where ut.validate=0
+    ) limit #{start}, #{end}
+  </select>
+
+  <select id="selectTagModifyUsersCount" resultType="java.lang.Integer">
+    select count(u.user_id) from user u where u.user_id IN(
+      select distinct ut.user_id from user_tag ut where ut.validate=0
+    )
+  </select>
+</mapper>

@@ -1,0 +1,22 @@
+<wxs src="../../../utils/date.wxs" module="filter" />
+<view class="fav-list">
+  <van-cell label="抢单时间：{{filter.format(item.signupTime, 'YY-MM-DD hh:mm')}}" center wx:for="{{dataList.records}}" wx:key="campaignId" bind:click="toBlogDetail" data-sid="{{item.serviceId}}">
+    <view slot="title">
+      <view class="van-cell-text title">
+        <view style="font-size: 16px;">
+          <text>{{item.service.hospital}}</text>
+          <view class="status">
+            <van-tag color="#887bff" wx:if="{{item.status==0}}" round size="medium">待确认</van-tag>
+            <van-tag color="#41a8a8" wx:if="{{item.status==1}}" round size="medium">抢单成功</van-tag>
+            <van-tag color="#888888" wx:if="{{item.status==-1}}" round size="medium">抢单失败</van-tag>
+          </view>
+        </view>
+        <view><text class="meta">就诊时间：</text>{{filter.format(item.service.serviceDate, 'YY-MM-DD hh:mm')}}</view>
+        <view>
+          
+        </view>
+      </view>
+      <!-- <van-button icon="star-o" color="#887bff">取消</van-button> -->
+    </view>
+  </van-cell>
+</view>

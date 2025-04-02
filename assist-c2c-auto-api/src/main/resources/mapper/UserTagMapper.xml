@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.assist.dao.mapper.UserTagMapper">
+  <resultMap id="BaseResultMap" type="com.assist.dao.model.UserTag">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_tag_id" jdbcType="INTEGER" property="userTagId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="tag_id" jdbcType="INTEGER" property="tagId" />
+    <result column="validate" jdbcType="INTEGER" property="validate" />
+    <association property="tag" column="tag_id" select="com.assist.dao.mapper.TagMapper.selectTagById"/>
+  </resultMap>
+
+  <select id="selectUserTagByUserId" resultMap="BaseResultMap">
+    select ut.* from user_tag ut where ut.user_id=#{userId}
+  </select>
+
+  <select id="selectUserTagByName" resultMap="BaseResultMap">
+    select ut.* from user_tag ut where ut.tag_id IN(
+        select t.tag_id from tag t where t.tag_name=#{tagName}
+      ) and ut.validate=1
+  </select>
+
+  <select id="selectUserWithoutTagByName" resultMap="BaseResultMap">
+    select ut.* from user_tag ut where ut.tag_id NOT IN(
+      select t.tag_id from tag t where t.tag_name=#{tagName}
+    ) and ut.validate=1
+  </select>
+</mapper>

@@ -1,0 +1,162 @@
+<!--miniprogram/pages/select_role/role.wxml-->
+<wxs src="../../utils/date.wxs" module="filter" />
+<view  class="book-detail">
+  <view class="block">
+    <block wx:if="{{userInfo.role==1 && order.orderStatus==1}}">
+      <view class="qrcode">
+        <!-- <image src="{{qrCodeUrl}}"/> -->
+        <rich-text nodes="{{qrCodeHtml}}"/>
+      </view>
+      <view class="p">陪诊完成后出示二维码核销</view>
+    </block>
+    <view class="p">
+      <text class="msg" wx:if="{{order.orderStatus==0}}">待确认</text>
+      <text class="msg" wx:if="{{order.orderStatus==1}}">待就诊</text>
+      <text class="msg" style="color: #fd715e;" wx:if="{{order.orderStatus==2}}">等待支付</text>
+      <text class="msg" wx:if="{{order.orderStatus==3}}">已完成</text>
+      <text class="msg" style="color: #888;" wx:if="{{order.orderStatus==-1}}">已取消</text>
+    </view>
+  </view>
+  <view class="block block2">
+    <view class="item">
+      <text class="meta">就诊医院</text>
+      <text class="value">{{order.serviceNeed.hospital}}</text>
+    </view>
+    <view class="item" wx:if="{{order.serviceNeed.dept}}">
+      <text class="meta">科室</text>
+      <text class="value">{{order.serviceNeed.dept}}</text>
+    </view>
+    <view class="item">
+      <text class="meta">就诊时间</text>
+      <text class="value time">{{filter.format(order.serviceNeed.serviceDate, 'YY-MM-DD hh:mm')}}</text>
+    </view>
+    <view class="item">
+      <text class="meta">需求类别</text>
+      <view class="value">
+        <van-tag color="#88C9A0" round size="medium">{{order.serviceNeed.serviceType}}</van-tag>
+      </view>
+    </view>
+    <view class="item">
+      <text class="meta">接送需求</text>
+      <text class="value" wx:if="{{order.serviceNeed.needPickup==0}}">不需要接送</text>
+      <text class="value pck" wx:if="{{order.serviceNeed.needPickup==1}}">需要接送</text>
+    </view>
+    <view class="item">
+      <text class="meta">陪诊费用</text>
+      <text class="value" wx:if="{{order.price==null||order.price==0}}"><text class="price">等待陪诊师上传价格</text></text>
+      <text class="value" wx:else>￥<text class="price">{{filter.toFixed1(order.price)}}</text></text>
+    </view>
+    <view class="item" wx:if="{{order.remark}}">
+      <text class="meta">费用说明</text>
+      <text class="value">{{order.remark}}</text>
+    </view>
+    <view class="item" wx:if="{{userInfo.role==2}}">
+      <text class="meta">就诊人</text>
+      <view class="value">
+        {{order.user.realName}}
+        <text class="tel" bindtap="onCall" data-mobile="{{order.serviceNeed.mobile}}">{{order.serviceNeed.mobile}}</text>
+      </view>
+    </view>
+    <view class="item" wx:if="{{order.orderStatus>0&&userInfo.role==1}}">
+      <text class="meta">陪诊师</text>
+      <view class="value">
+        {{order.assistant.realName}}
+        <text class="tel" bindtap="onCall" data-mobile="{{order.assistant.mobile}}">{{order.assistant.mobile}}</text>
+      </view>
+    </view>
+    <view class="item" wx:if="{{userInfo.role==1}}">
+      <text class="meta">服务码</text>
+      <view class="value">
+        <text style="font-size:18px;">{{order.orderCode}}</text>
+      </view>
+    </view>
+    <view class="item" wx:if="{{order.serviceNeed.content}}">
+      <text class="meta">需求详情</text>
+      <text class="value">{{order.serviceNeed.content}}</text>
+    </view>
+  </view>
+  <view class="tips" wx:if="{{order.orderStatus<2}}">
+    <view class="title">温馨提示</view>
+    <view class="content" wx:if="{{userInfo.role==1}}">
+      <view class="p">
+        为保障您的权利，请在陪诊师完成陪诊服务后，与陪诊师协商好最终服务价格，由陪诊师上传总服务费后，向其出示该二维码，由陪诊师扫描，完成订单。
+      </view>
+      <view class="p">
+        请勿脱离平台私下向陪诊师转账，若发现陪诊师有违规行为，可向平台投诉举报。
+      </view>
+    </view>
+    <view class="content" wx:if="{{userInfo.role==2}}">
+      陪诊完成后，请向客人要求出示二维码并扫码，以结束本次陪诊服务。成功扫码二维码后，平台将会把陪诊费用转至您的账户。
+    </view>
+  </view>
+  <view class="tips feedback" wx:if="{{order.orderStatus==3&&order.feedback!=null}}">
+    <view class="title">评价反馈</view>
+    <view class="content">
+      <van-rate value="{{ order.feedback.rate }}" readonly void-icon="like-o" icon="like"/>
+    </view>
+    <view class="content">
+      <view>{{order.feedback.content}}</view>
+    </view>
+    <view class="content">{{filter.format(order.feedback.feedbackTime, 'YY-MM-DD hh:mm')}}</view>
+  </view>
+  
+  <block wx:if="{{userInfo.role==2}}">
+    <view class="btns" wx:if="{{order.orderStatus==0}}">
+      <van-button icon="certificate" color="#41a8a8" bindtap="confirmlOrder">接受订单</van-button>
+      <text style="padding: 0 10px;"></text>
+      <van-button icon="close" color="#fd715e" bindtap="rejectOrder">拒绝订单</van-button>
+    </view>
+    <view class="btns" wx:if="{{order.orderStatus==1}}">
+      <van-button icon="scan" color="#41a8a8" bindtap="scanQr">扫描二维码</van-button>
+    </view>
+      <!-- <van-button icon="scan" color="#41a8a8" bindtap="onShowCode">验证服务码</van-button> -->
+  </block>
+
+  <!--反馈评价表单-->
+  <block wx:if="{{userInfo.role==1}}">
+    <view class="btns">
+      <van-button icon="user-o" color="#41a8a8" bindtap="confirmlOrder" bindtap="toAssistantDetail" data-aid='{{order.assistantId}}'>陪诊师详情</van-button>
+      <text style="padding: 0 8px;"></text>
+      <van-button icon="close" color="#fd715e" bindtap="cancelOrder" wx:if="{{order.orderStatus==1}}">取消订单</van-button>
+      <van-button icon="gold-coin-o" color="#fd715e" bindtap="onPay" wx:if="{{order.orderStatus==2}}">立即支付</van-button>
+    </view>
+    <view class="feedback" wx:if="{{order.orderStatus==3&&order.feedback==null}}">
+      <!--评价反馈-->
+      <view class="ftitle">我要评价</view>
+      <van-rate value="{{ rateNum }}" bind:change="onChangeRate" void-icon="like-o" icon="like"/>
+      <view class="txtarea">
+        <textarea bindinput="bindFeedbackContent" placeholder="请输入评价详情，如：服务态度、是否准时" maxlength="-1"/>
+      </view>
+      <view class="btns">
+        <van-button icon="share-o" color="#fd715e" bindtap="onFeedback">提交评价</van-button>
+      </view>
+    </view>
+  </block>
+
+  <!--验证服务码-->
+  <view class="feedback" wx:if="{{showCodeValidate}}">
+      <view class="ftitle">验证服务码</view>
+      <view class="txtarea">
+        <input bindinput="bindCodeInput" placeholder="请输入6位数字" type="number" setp="1" style="font-size: 18px;"/>
+      </view>
+      <view class="btns">
+        <van-button icon="certificate" color="#fd715e" bindtap="onCheckCode">验证</van-button>
+      </view>
+    </view>
+
+  <!--上传费用表单-->
+  <view class="feedback" wx:if="{{showFee}}">
+    <view class="ftitle">上传陪诊费用</view>
+    <view class="txtarea">
+      <input bindinput="bindFeeInput" placeholder="请输入金额，单位：元" type="number" setp="0.1" min="0"/>
+    </view>
+    <view class="txtarea">
+      <textarea bindinput="bindRemarkInput" placeholder="选填，费用说明" maxlength="-1"/>
+    </view>
+    <view class="btns">
+      <van-button icon="share-o" color="#fd715e" bindtap="onFeeUpload">上传</van-button>
+    </view>
+  </view>
+
+  <van-dialog id="van-dialog" />
+</view>

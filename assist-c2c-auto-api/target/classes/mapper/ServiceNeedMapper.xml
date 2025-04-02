@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.assist.dao.mapper.ServiceNeedMapper">
+  <resultMap id="BaseResultMap" type="com.assist.dao.model.ServiceNeed">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="service_id" jdbcType="INTEGER" property="serviceId" />
+    <result column="service_type" jdbcType="VARCHAR" property="serviceType" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="service_date" jdbcType="TIMESTAMP" property="serviceDate" />
+    <result column="need_pickup" jdbcType="INTEGER" property="needPickup" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="hospital" jdbcType="VARCHAR" property="hospital" />
+    <result column="service_tags" jdbcType="VARCHAR" property="serviceTags" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="pics" jdbcType="VARCHAR" property="pics" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="lat" jdbcType="VARCHAR" property="lat" />
+    <result column="lng" jdbcType="VARCHAR" property="lng" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="select_model" jdbcType="INTEGER" property="selectModel" />
+    <result column="gender_need" jdbcType="VARCHAR" property="genderNeed" />
+    <result column="age_range" jdbcType="VARCHAR" property="ageRange" />
+  </resultMap>
+
+  <select id="selectServiceById" resultMap="BaseResultMap">
+    select * from service_need s where s.service_id=#{serviceId}
+  </select>
+</mapper>

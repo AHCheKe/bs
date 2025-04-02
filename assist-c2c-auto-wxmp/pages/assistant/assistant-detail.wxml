@@ -1,0 +1,43 @@
+<wxs src="../../utils/date.wxs" module="filter" />
+<view class="blog-detail">
+  <view class="item">
+    <view class="profile">
+      <view class="img-container">
+        <image src="{{assistant.pic}}" mode="aspectFit" wx:if="{{assistant.pic}}" class="img"/>
+        <image src="http://129.211.222.131:18080/images/20230309132054typ1q.jpg" mode="aspectFit" wx:else class="img"/>
+      </view>
+      <view class="aname">
+        <view class="h2">{{assistant.realName}}</view>
+        <view>
+          <text class="mattr">{{assistant.location}}</text> 
+        </view>
+        <view style="padding: 8px 0;">
+          <text class="mattr">{{assistant.gender}}</text> 
+          <text class="mattr">{{assistant.age}}岁</text>
+        </view>
+        <view class="tags">
+          <van-tag round color="#88C9A0" wx:for="{{assistant.tagList}}" wx:for-item="tag" wx:key="id" size="large">{{tag}}</van-tag>
+        </view>
+        <view class="tags">
+          <text>评分：</text>
+          <van-rate readonly value="{{assistant.rate}}" icon="like" void-icon="like-o" allow-half color="#e64a5c" size="16"/>
+          <text> {{assistant.rate}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="remark" wx:if="{{assistant.assistDesc}}">{{assistant.assistDesc}}</view>
+    <view style="padding: 5px 10px;color: #555;">
+      资格认证材料：
+    </view>
+    <view class="img-box">
+      <view class="box" wx:for="{{assistant.picList}}" wx:for-item="imgItem" wx:for-index="imgIdx" wx:key="imgIdx">
+        <image class="pet-img" mode="aspectFill" src="{{imgItem}}" wx:key="id" bindtap="showLargeImage" data-idx="{{imgIdx}}" data-logidx="{{index}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="btns">
+    <van-button icon="completed-o" color="#88C9A0" bindtap="toApp" round>我要预约TA</van-button>
+  </view>
+  <van-notify id="van-notify" />
+  <van-dialog id="van-dialog" />
+</view>

@@ -1,0 +1,32 @@
+<wxs src="../../utils/date.wxs" module="filter" />
+<view class="service">
+  <view class="history">
+    <van-cell value="" is-link center wx:for="{{historyList.records}}" wx:key="roomServiceId" bind:click="toDetail" data-oid="{{item.orderId}}">
+      <view slot="title">
+        <view class="ostatus">
+          <van-tag color="#A8DADC" round size="medium" wx:if="{{item.orderStatus==0}}">待确认</van-tag>
+          <van-tag color="#457B9D" round size="medium" wx:if="{{item.orderStatus==1}}">待就诊</van-tag>
+          <van-tag color="#2A5C8F" round size="medium" wx:if="{{item.orderStatus==2}}">等待支付</van-tag>
+          <van-tag color="#88C9A0" round size="medium" wx:if="{{item.orderStatus==3}}">已完成</van-tag>
+          <van-tag color="#FFB5B5" round size="medium" wx:if="{{item.orderStatus==-1}}">已取消</van-tag>
+        </view>
+        <view class="van-cell-text">
+          <text class="ft16">{{item.serviceNeed.hospital}}</text>
+          <van-tag plain size="medium" color="#41a8a8">{{item.serviceNeed.serviceType}}</van-tag>
+        </view>
+        <view class="ainfo" wx:if="{{userInfo.role==1}}">
+          <text>陪诊师：</text>
+          <text class="aname">{{item.assistant.realName}}</text>
+        </view>
+        <view class="ainfo" wx:if="{{userInfo.role==2}}">
+          <text>客户：</text>
+          <text class="aname aname2">{{item.user.realName}}</text>
+        </view>
+        <view class="service-time">
+          <text class="meta">就诊时间：</text><text class="btime">{{filter.format(item.serviceNeed.serviceDate, 'MM-DD-HH:mm cn')}}</text>
+        </view>
+      </view>
+    </van-cell>
+    <view class="no-more" wx:if="{{noMore}}">——已全部加载——</view>
+  </view>
+</view>

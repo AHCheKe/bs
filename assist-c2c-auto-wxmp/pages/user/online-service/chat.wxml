@@ -1,0 +1,42 @@
+<wxs src="../../../utils/date.wxs" module="filter" />
+<view class="chat">
+	<scroll-view scroll-y="true" show-scrollbar="true" enhanced="true" class="input-dialog" class="scroll-text" scroll-y scroll-top="{{scrollTop}}">
+		<view class="loading" wx:if="{{msgLoading}}">消息加载中...</view>
+		<block wx:for="{{msgList}}" wx:key="msgId">
+			<!--other：这是客服发的消息，me：这是我发的消息-->
+			<view class="msg-item other" wx:if="{{item.adminId=='admin'}}">
+				<view class="profile">
+					<image src="{{item.user.pic}}" mode="aspectFill" wx:if="{{item.user.pic!=null&&item.user.pic!=''}}"/>
+					<image src="http://129.211.222.131:18080/images/20230309132054typ1q.jpg" mode="aspectFill" wx:else/>
+				</view>
+				<view class="content">
+					<view class="msg-time">{{item.user.nickName}} {{filter.format(item.sendTime, 'YY-MM-DD hh:mm')}}</view>
+					<view class="msg">
+						<text>{{item.content}}</text>
+					</view>
+				</view>
+			</view>
+			<view class="msg-item me" wx:else>
+				<view class="content">
+					<view class="msg-time">{{item.user.nickName}} {{filter.format(item.sendTime, 'YY-MM-DD hh:mm')}}</view>
+					<view class="msg">
+						<text>{{item.content}}</text>
+					</view>
+				</view>
+				<view class="profile">
+					<image src="{{userInfo.pic}}" mode="aspectFill" wx:if="{{userInfo.pic!=null&&userInfo.pic!=''}}"/>
+					<image src="http://129.211.222.131:18080/images/20230309132054typ1q.jpg" mode="aspectFill" wx:else=""/>
+				</view>
+			</view>
+		</block>
+	</scroll-view>
+	<!--消息输入框-->
+	<view class="editor">
+		<textarea class="inputer" placeholder="请输入消息……" value="{{msgContent}}" maxlength="-1" bindinput="bindMsgContentInput"></textarea>
+		<view class="btn">
+			<!-- <van-button color="#b5594c" icon="photo-o" style="width: 100%;" bindtap="sendPicMsg" size="small">图片</van-button> -->
+			<view style="height: 4px;"></view>
+			<van-button color="#5c9dba" icon="share" style="width: 100%;" bindtap="sendTxt" size="small" style="margin-top: 5px;">发送</van-button>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,33 @@
+<wxs src="../../utils/date.wxs" module="filter" />
+<view>
+  <!-- <view class="search">
+    <view class="location" bindtap="changeCity">
+      <van-icon name="location"/>{{currCity}}
+    </view>
+    <input type="text" value="{{kw}}" class="sinput" confirm-type="search" placeholder="搜索陪诊师" bindconfirm="onSearch" bindinput="bindKwInput"/>
+    <van-icon name="close" class="cicon" wx:if="{{kw!=''}}" bindtap="onClearSearch"/>
+  </view> -->
+  <view class="note-list">
+    <view class="item" wx:for="{{dataList.records}}" wx:key="userId" bindtap="toBlogDetail" data-aid='{{item.userId}}'>
+      <view class="auth-view">
+        <view class="profile" >
+          <image src="{{item.pic}}" mode="aspectFit" wx:if="{{item.pic}}"/>
+          <image src="http://129.211.222.131:18080/images/20230309132054typ1q.jpg" mode="aspectFit" wx:else/>
+        </view>
+        <view class="right">
+          <view class="nickname">{{item.nickName}}</view>
+          <view class="rate">评分
+            <van-rate readonly value="{{item.rate}}" icon="like" void-icon="like-o" allow-half color="#e64a5c" size="16"/>
+          </view>
+          <view class="type">
+            <van-tag round color="#88C9A0" wx:for="{{item.tagList}}" wx:for-item="tag" wx:key="id" size="medium">{{tag}}</van-tag>
+          </view>
+        </view>
+        <!-- <view class="ptime">{{filter.format(item.publishTime, 'YY-MM-DD hh:mm')}}</view> -->
+        <view class="ptime">已完成{{item.totalService}}次陪诊</view>
+      </view>
+      <view class="remark" wx:if="{{item.assistDesc}}">{{item.assistDesc}}</view>
+    </view>
+    <view class="no-more" wx:if="{{noMore}}">——已全部加载——</view>
+  </view>
+</view>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.assist.dao.mapper.CertifyMapper">
+  <resultMap id="BaseResultMap" type="com.assist.dao.model.Certify">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="certify_id" jdbcType="INTEGER" property="certifyId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="app_time" jdbcType="TIMESTAMP" property="appTime" />
+    <result column="app_content" jdbcType="VARCHAR" property="appContent" />
+    <result column="attachment" jdbcType="VARCHAR" property="attachment" />
+    <result column="certify_status" jdbcType="INTEGER" property="certifyStatus" />
+    <result column="certify_time" jdbcType="TIMESTAMP" property="certifyTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+</mapper>

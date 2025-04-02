@@ -1,0 +1,32 @@
+<view  class="user-file">
+  <view class="val-input">
+    <view class="label">
+      <text>我当前的性格标签</text>
+      <view class="desc" style="padding: 0;" wx:if="{{!myTagList || myTagList.length==0}}">您当前未关联任何性格标签</view>
+    </view>
+    <view class="my-tags">
+      <block wx:for="{{myTagList}}" wx:key="userTagId">
+        <van-tag round color="#5c9dba" size="large" wx:if="{{item.validate==1}}">{{item.tag.tagName}}</van-tag>
+        <van-tag round color="#0076b8" size="large"  wx:if="{{item.validate==0}}">{{item.tag.tagName}}(审核中)</van-tag>
+        <van-tag round color="#888" size="large"  wx:if="{{item.validate==-1}}">{{item.tag.tagName}}(审核失败)</van-tag>
+      </block>
+    </view>
+  </view>
+  <view class="val-input">
+    <view class="label">
+      <text>修改性格标签</text>
+      <view class="desc" style="padding: 0;">提交后原标签将全部失效，新标签需要等待管理员重新审核方能生效。</view>
+    </view>
+    <view class="page-section page-section-gap">
+      <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox" wx:for="{{serviceTagList}}" wx:key="value">
+          <checkbox value="{{item.tagId}}" color="#fd715e"/><text>{{item.tagName}}</text>
+        </label>
+      </checkbox-group>
+    </view>
+  </view>
+  <view class="btns">
+    <van-button color="#fd715e" icon="share" bindtap="publishUpdate">提交申请</van-button>
+  </view>
+  <van-dialog id="van-dialog" />
+</view>

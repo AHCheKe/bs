@@ -1,0 +1,63 @@
+<wxs src="../../utils/date.wxs" module="filter" />
+<view class="main-view">
+  <!--搜索栏-->
+  <view class="search">
+    <view class="location" bindtap="changeCity">
+      <van-icon name="location-o"/>
+      <text> {{currCity}}</text>
+    </view>
+    <view class="publish-btn" bindtap="toAddPage" wx:if="{{userInfo.role==1}}">
+      <van-icon name="todo-list-o" />
+      <text> 发布陪诊需求</text>
+    </view>
+  </view>
+  <!--轮播图-->
+  <view class="page-section page-section-spacing swiper">
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}">
+      <block wx:for="{{slidePics}}" wx:key="index">
+        <swiper-item>
+          <view class="swiper-item">
+            <image src="{{item.picUrl}}" mode="aspectFill"/>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!--服务类型列表-->
+  <view class="stype-list" wx:if="{{userInfo.role==1}}">
+    <block wx:for="{{serviceTypeList}}" wx:for-item="st" wx:for-index="idx" wx:key="hospitalId">
+      <view class="sitem ty2" wx:if="{{idx%4==1}}" bindtap="toAddPage" data-tid="{{st.serviceId}}">
+        <view class="item-txt">{{st.serviceName}}</view>
+      </view>
+      <view class="sitem ty3" wx:elif="{{idx%4==2}}" bindtap="toAddPage" data-tid="{{st.serviceId}}">
+        <view class="item-txt">{{st.serviceName}}</view>
+      </view>
+      <view class="sitem ty4" wx:elif="{{idx%4==3}}" bindtap="toAddPage" data-tid="{{st.serviceId}}">
+        <view class="item-txt">{{st.serviceName}}</view>
+      </view>
+      <view class="sitem" wx:else>
+        <view class="item-txt" bindtap="toAddPage" data-tid="{{st.serviceId}}">{{st.serviceName}}</view>
+      </view>
+    </block>
+  </view>
+  <!--通知公告-->
+  <view class="notice">
+    <van-cell wx:for="{{noticeList}}" wx:key="noticeId" bind:click="toNoticeDetailPage" data-nid="{{item.noticeId}}">
+      <view slot="title">
+        <view class="van-cell-text">
+          <text class="ft16">{{item.title}}</text>
+        </view>
+        <view class="service-time">
+          <van-tag color="#88C9A0" round size="medium" wx:for="{{item.tagList}}" wx:for-item="notice" wx:key="noticeId">{{notice}}</van-tag>
+          <text class="btime"> {{filter.format(item.publishTime, 'YY-MM-DD hh:mm')}}</text>
+        </view>
+      </view>
+    </van-cell>
+  </view>
+  <!-- <view class="add-button" bindtap="toAddPage" data-category="field">
+    <view class="add-icon">
+      <van-icon name="edit" />
+    </view>
+    <view>发布</view>
+  </view>  -->
+</view>

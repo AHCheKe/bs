@@ -1,0 +1,37 @@
+<wxs src="../../utils/date.wxs" module="filter" />
+<view class="main-view">
+  <view class="search">
+    <view class="location" bindtap="changeCity">
+      <van-icon name="location"/>{{currCity}}
+    </view>
+    <input type="text" value="{{kw}}" class="sinput" confirm-type="search" placeholder="搜索陪诊需求" bindconfirm="onSearch" bindinput="bindKwInput"/>
+    <van-icon name="close" class="cicon" wx:if="{{kw!=''}}" bindtap="onClearSearch"/>
+  </view>
+  <view class="note-list">
+    <view class="item" wx:for="{{listData.records}}" wx:key="blogId" bindtap="toDetailPage" data-aid='{{item.serviceId}}'>
+      <view class="stype">
+        <van-tag color="#887bff" round size="medium">{{item.serviceType}}</van-tag>
+        <text class="stime">{{filter.format(item.serviceDate, 'YY-MM-DD hh:mm')}}</text>
+        <view class="price">
+          <text>￥<text class="amount">{{filter.toFixed1(item.price)}}</text></text>
+        </view>
+      </view>
+      <view class="name-title">
+        <text>{{item.hospital}}</text>
+        <view class="pickup">
+          <text wx:if="{{item.needPickup==1}}" class="need">需要接送</text>
+          <text wx:else>无需接送</text>
+        </view>
+      </view>
+      <view class="remark">{{item.content}}</view>
+    </view>
+    <view class="no-more" wx:if="{{noMore}}">——已全部加载——</view>
+    <view class="no-more" wx:if="{{noSearch}}">——未搜索到相关结果——</view>
+  </view>
+  <view class="add-button" bindtap="toAddPage" data-category="field">
+    <view class="add-icon">
+      <van-icon name="edit" />
+    </view>
+    <view>发布</view>
+  </view> 
+</view>

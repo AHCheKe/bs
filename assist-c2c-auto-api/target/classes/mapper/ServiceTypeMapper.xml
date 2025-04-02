@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.assist.dao.mapper.ServiceTypeMapper">
+  <resultMap id="BaseResultMap" type="com.assist.dao.model.ServiceType">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="service_id" jdbcType="INTEGER" property="serviceId" />
+    <result column="service_name" jdbcType="VARCHAR" property="serviceName" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="service_desc" jdbcType="VARCHAR" property="serviceDesc" />
+    <result column="service_notice" jdbcType="VARCHAR" property="serviceNotice" />
+  </resultMap>
+
+  <select id="selectServiceTypeById" resultMap="BaseResultMap">
+    select * from service_type st where st.service_id=#{serviceId}
+  </select>
+</mapper>

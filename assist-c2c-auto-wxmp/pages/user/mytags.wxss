@@ -1,0 +1,90 @@
+/* pages/capsule/capsule-publish.wxss *//* miniprogram/pages/select_role/role.wxss */
+.select-view{
+  margin-top: 40%;
+}
+.user-file{
+  font-size: 14px;
+  background-color: #efefef;
+}
+.val-input{
+  margin-bottom: 10px;
+  background-color: #fff;
+  padding: 5px 15px 10px 15px;
+  color: #333;
+}
+.val-input .label .desc{
+  font-weight: normal;
+  font-size: 13px;
+  color: #888;
+  padding-left: 10px;
+}
+.user-file .label{
+  color: #666;
+  padding-top: 8px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.user-file input, .user-file textarea, .picker{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px 0;
+  margin-top: 5px;
+}
+.user-file textarea{
+  border: 1px solid #ccc;
+}
+.user-file textarea{
+  height: 120px; 
+  padding: 5px;
+  margin-top: 5px;
+}
+.user-file input{height: 35px;}
+.user-file .orange-btn{
+  margin-top: 15px;
+}
+.bottom-btn{
+  text-align: center;
+  padding-bottom: 8vh;
+}
+.fb-btn{
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  background: #5c9dba;
+  color: #fff;
+  width: 120px;
+  text-align: center;
+  border-radius: 17px;
+}
+.input-btn-lin{
+  position: relative;
+}
+.cdate{
+  padding-top: 10px;
+}
+.val-input .tip{
+  padding-top: 5px;
+  color: #666;
+  font-size: 14px;
+}
+.tip .head{
+  font-weight: bold;
+  padding-top: 4px;
+}
+.my-tags{
+  margin-top: 5px;
+}
+.my-tags van-tag{
+  margin: 0 10px 8px 0;
+  display: inline-block;
+}
+.val-input .checkbox{
+  padding-right: 12px;
+  line-height: 35px;
+  height: 35px;
+}
+.btns{
+  text-align: center;
+  background-color: #fff;
+  padding-top: 10vh;
+}

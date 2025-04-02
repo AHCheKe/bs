@@ -1,0 +1,38 @@
+<wxs src="../../../utils/date.wxs" module="filter" />
+<view class="fav-list">
+  <van-cell label="抢单时间：{{filter.format(item.signupTime, 'YY-MM-DD hh:mm')}}" center wx:for="{{dataList}}" wx:key="campaignId">
+    <view slot="title">
+      <view class="van-cell-text title">
+        <view class="row1">
+          <text class="meta">陪诊师：</text>
+          <text class="aname">{{item.assistant.realName}}</text>
+          <view class="gender">
+            <van-tag color="#fd715e" wx:if="{{item.assistant.gender=='女'}}" round size="medium" size="small">
+              <van-icon name="contact-o" /> 女
+            </van-tag>
+            <van-tag color="#41a8a8" wx:if="{{item.assistant.gender=='男'}}" round size="medium" size="small">
+              <van-icon name="contact-o" /> 男
+            </van-tag>
+          </view>
+          <view class="btn" bindtap="selectAssistant" data-cid="{{item.campaignId}}">
+            <van-button color="#41a8a8" size="small" icon="passed">选择陪诊师</van-button>
+          </view>
+        </view>
+        <view class="row2">
+          <text class="meta">评分：</text>
+          <van-rate readonly value="{{item.assistant.rate}}" icon="like" void-icon="like-o" allow-half color="#e64a5c" size="16"/>
+        </view>
+        <view>
+          <text class="meta">简介：</text>
+          <text>{{item.assistant.assistDesc}}</text>
+        </view>
+        <view>
+          
+        </view>
+      </view>
+      <!-- <van-button icon="star-o" color="#887bff">取消</van-button> -->
+    </view>
+  </van-cell>
+  <view class="no-more" style="margin-top: 50px;" wx:if="{{dataList.length==0}}">——未有人抢单——</view>
+  <van-dialog id="van-dialog" />
+</view>

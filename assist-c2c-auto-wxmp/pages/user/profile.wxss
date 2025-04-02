@@ -1,0 +1,68 @@
+/* pages/user/profile.wxss */
+.content{
+  height: 100vh;
+  background-image: linear-gradient(to bottom, #88C9A0 0%, #A8DADC 50%, #ffffff 100%);
+}
+.profile{
+  margin-bottom: 20px;
+}
+.profile .item{
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.icon-l.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.profile .item .nickname{
+  font-size: large;
+  color: #2D3436;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.profile .profile-img{
+  height: 220rpx;
+  width: 220rpx;
+  border-radius: 150px;
+  border: 2px solid #fff;
+}
+.profile .item .count{
+  margin: 6px 0;
+  font-size: 14px;
+  color: #333;
+}
+.profile .count .meta{
+  font-size: 18px;
+  padding-right: 8rpx;
+}
+.profile .count .m2{
+  padding-left: 40rpx;
+}
+.profile .van-cell-text{
+  font-size: 16px;
+}
+.profile .van-cell .van-icon{
+  color: #2D3436;
+  font-size: 22px;
+  padding-right: 5px;
+}
+.count .vcert{
+  color: #88C9A0;
+  font-size: 20px;
+  padding-right: 4px;
+}
+.profile .van-cell .van-icon-arrow{
+  color: #969799;
+  font-size: 18px;
+}
+.logout-btn{
+  margin: 50rpx 0;
+  text-align: center;
+}
+.logout-btn van-button{
+  display: block;
+  margin-bottom: 20rpx;
+}

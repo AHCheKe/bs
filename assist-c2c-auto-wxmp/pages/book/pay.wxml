@@ -1,0 +1,20 @@
+<wxs src="../../utils/date.wxs" module="filter" />
+<view  class="user-file">
+  <van-popup
+    show="{{ showAuth }}"
+    closeable
+    bind:close="onCloseAuth"
+  >
+    <view class="pay-pop">
+      <view class="pay-head"><van-icon name="wechat-pay" style="font-size: 18px;padding-right: 5px; color: #07c160;"/>微信支付</view>
+      <view class="pay-bold">
+        <text class="dolar">￥</text>
+        <text class="money">{{filter.toFixed1(amount)}}</text>
+      </view>
+      <view class="pay-btns">
+        <van-button type="primary" size="normal" custom-class="auth-btn" bindtap="doPay" data-ptype="1">微信支付</van-button>
+      </view>
+    </view>
+  </van-popup>
+  <van-dialog id="van-dialog" />
+</view>

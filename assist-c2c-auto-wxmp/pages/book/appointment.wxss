@@ -1,0 +1,110 @@
+/* pages/capsule/capsule-publish.wxss *//* miniprogram/pages/select_role/role.wxss */
+.select-view{
+  margin-top: 40%;
+}
+.user-file{
+  font-size: 16px;
+  background-color: #efefef;
+}
+.val-input{
+  margin-bottom: 10px;
+  background-color: #fff;
+  padding: 5px 15px 10px 15px;
+}
+.val-input .label .desc{
+  font-weight: normal;
+  font-size: 14px;
+  color: #999;
+  padding-left: 10px;
+}
+.user-file .label{
+  color: #666;
+  padding-top: 8px;
+  font-weight: bold;
+  font-size: 16px;
+}
+.user-file input, .user-file textarea, .picker{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px 0;
+  margin-top: 5px;
+}
+.user-file textarea{
+  border: 1px solid #ccc;
+}
+.category-txt{
+  color: #88C9A0;
+  font-size: 18px;
+}
+.user-file textarea{
+  height: 120px; 
+  padding: 5px;
+  margin-top: 5px;
+}
+.user-file input{height: 35px;}
+.user-file .orange-btn{
+  margin-top: 15px;
+}
+.bottom-btn{
+  text-align: center;
+  padding-bottom: 8vh;
+}
+.fb-btn{
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  background: #88C9A0;
+  color: #fff;
+  width: 120px;
+  text-align: center;
+  border-radius: 17px;
+}
+.img-list{
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  padding: 10px 0;
+}
+.upload-img{
+  width: 31%;
+  height: 90px;
+  text-align: center;
+  margin-bottom: 10px;
+  position: relative;
+  padding: 0 1%;
+}
+.upload-img .pic{
+  width: 100%;
+  height: 90px;
+}
+.camera-icon{
+  width:80px;
+  height:80px;
+}
+.upload-img .del-btn{
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+}
+.input-btn-lin{
+  position: relative;
+}
+.form-type{
+  font-size: larger;
+  margin: 12px 0;
+  color: #88C9A0;
+  text-align: center;
+}
+.cdate{
+  padding-top: 10px;
+}
+.pickup-rdo{
+  display: inline-block;
+  padding: 12px 20px 8px 0;
+}
+.red-dot{
+  color: #88C9A0;
+}

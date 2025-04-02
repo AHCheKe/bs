@@ -1,0 +1,128 @@
+.btns{
+  margin: 30px 0;
+  text-align: center;
+}
+.book-detail{
+  background-color: #fafafb;
+  padding: 15px 4% 5vh 4%;
+  font-size: small;
+  color: #666;
+}
+.block{
+  background-color: #fff;
+  margin: 0 3%;
+  padding-bottom: 15px;
+}
+.block .qrcode{
+  text-align: center;
+}
+.block .qrcode image{
+  width: 300rpx;
+  height: 300rpx;
+}
+.block .p{
+  font-size: 14px;
+  padding: 10px 0;
+  text-align: center;
+}
+.p .time{
+  color: #88C9A0;
+  font-size: 16px;
+}
+.block .item .price{
+  color: #88C9A0;
+  font-weight: bold;
+}
+.p .msg{
+  color: #52ae89;
+  font-size: 22px;
+}
+.p .code{
+  font-size: 22px;
+  color: #41a8a8;
+}
+.block .item{
+  width: 100%;
+  box-sizing: border-box;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 2%;
+  font-size: 14px;
+}
+.block2{
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+.item .meta{
+  float: left;
+  width: 35%;
+  color: #999;
+}
+.item .value{
+  float: right;
+  width: 65%;
+  color: #666;
+  text-align: right;
+}
+.tips{
+  margin: 12px 3%;
+  background-color: #fff;
+  padding: 20px 2%;
+  box-sizing: border-box;
+  clear: both;
+}
+.tips .content{
+  font-size: 14px;
+  line-height: 24px;
+}
+.tips .content .p{
+  padding-bottom: 8px;
+}
+.tips .title{
+  margin-bottom: 12px;
+  color: #fd715e;
+}
+.van-cell__value{
+  font-size: small;
+}
+.item .tel{
+  font-weight: bold;
+  text-decoration: underline;
+}
+.title{
+  color: #333;
+}
+.title .meta{
+  color: #888;
+}
+.status{
+  float: right;
+}
+.feedback{
+  padding: 0 3%;
+}
+.feedback .ftitle{
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.feedback .txtarea{
+  border: 1px solid #FF6B6B;
+  background-color: #fff;
+  padding: 2px 8px;
+  margin-top: 5px;
+}
+.feedback textarea{
+  height: 50px;
+  width: 100%;
+}
+.feedback .btns{
+  margin: 15px 0;
+  text-align: center;
+}
+.feedback .content{
+  line-height: 22px;
+  padding-bottom: 5px;
+}
+.feedback .title{
+  padding-top: 10px;
+}

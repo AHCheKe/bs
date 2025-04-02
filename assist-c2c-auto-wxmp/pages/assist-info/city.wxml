@@ -1,0 +1,67 @@
+<view class="vh-100  pt-60 city-containery">
+ 
+ <!-- 搜索框 -->
+ <view class="flex  items-center justify-between nav-Searc">
+   <view class="flex-1 search-bar ">
+     <view class="search-bar-form">
+       <view class="search-bar-box">
+         <!-- <icon class="icon-search-in-box" type="search" size="16"></icon> -->
+         <input confirm-type="search" class="search-bar-input" placeholder="输入城市名称或首字母查询" placeholder-class="phcolor" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+         <view class="icon-clear" wx:if="{{inputVal}}" bindtap="clearInput">
+           <icon type="clear" size="15"></icon>
+         </view>
+       </view>
+       <label class="search-bar-label" wx:if="{{!inputShowed}}" bindtap="showInput">
+         <!-- <icon class="icon-search" type="search" size="16"></icon> -->
+         <view class="search-bar-text">输入城市名称或首字母查询</view>
+       </label>
+     </view>
+   </view>
+ </view>
+
+ <!-- 定位当前 -->
+ <view class="location flex justify-between mt-10 mb-10" wx:if="{{!inputShowed}}">
+   <view class="top ml-10">当前：{{CurrentLocation}}</view>
+   <view class="bottom mr-10 flex">
+     <van-icon name="close" class="mr-10" />
+     <text bindtap="getCurrentPositioning">重新定位</text>
+   </view>
+ </view>
+
+ <!-- 搜索出来的关键词 -->
+ <view class="tui-list search-result" wx:if="{{inputShowed}}">
+   <view class="tui-list-cell" hover-class="tui-list-cell-hover" wx:for="{{searchResult}}" wx:key="index" bindtap="selectCity" data-name="{{item}}" hover-stay-time='150'>
+     <view class="tui-list-cell-navigate">
+       {{item}}
+     </view>
+   </view>
+ </view>
+
+
+ <!-- 热门城市  -->
+ <!-- sticky:关闭吸顶 -->
+ <!-- 选中的索引颜色 highlight-color="" -->
+ <van-index-bar sticky="false" z-index="2">
+   <van-index-anchor index="热门城市" wx:if="{{!inputShowed}}" />
+   <view class="dg x-city-hot container" wx:if="{{!inputShowed}}">
+     <block wx:for="{{hotCity}}" wx:key="index">
+       <view class="dg place-center x-city-hot-item" bindtap="selectCity" data-name="{{item}}">{{item}}</view>
+     </block>
+   </view>
+   <!-- 各类城市 -->
+   <block wx:for="{{cityJson}}" wx:key="index">
+     <view>
+       <!-- 字母排序 -->
+       <van-index-anchor index="{{item.letter}}" />
+       <!-- 城市 -->
+       <block wx:for="{{item.data}}" wx:key="index">
+         <van-cell title=" {{item.cityName}}" bindtap="selectCity2" data-name="{{item}}" />
+       </block>
+     </view>
+   </block>
+ </van-index-bar>
+
+</view>
+<view class="confirm-btn" bindtap="confirmSelect">
+  确定
+</view>

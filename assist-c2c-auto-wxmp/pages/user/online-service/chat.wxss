@@ -1,0 +1,233 @@
+.item .remark{
+  font-size: 13px;
+  color: #666;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+.title-img{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.title-img image{
+  width: 450rpx;
+  height: 400rpx;
+}
+.blog-detail .item{
+  box-shadow: 2px 2px 5px #ccc;
+  padding: 8px 3%;
+}
+.blog-detail .pet-title{
+  font-size: 16px;
+  color: #666;
+  padding-bottom: 6px;
+}
+.item .tags{
+  margin-bottom: 5px;
+}
+.auth-view .nickname{
+  color: #5d7db3;
+  font-size: 18px;
+  height: 26px;
+  line-height: 26px;
+}
+.auth-view .location{
+  color: #666;
+  font-size: 14px;
+  height: 26px;
+  line-height: 26px;
+}
+.auth-view .location .van-icon{
+  font-size: 14px;
+}
+.auth-view .ptime{
+  font-size: 14px;
+  color: #888;
+  padding-left: 6px;
+}
+.ass-btn{
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  border-radius: 20px;
+  background-color: #5c9dba;
+  font-size: 13px;
+  text-align: center;
+  float: right;
+}
+.empty{
+  text-align: center;
+  color: #888;
+  padding-top: 20vh;
+}
+.empty image{
+  width: 100px;
+  height: 100px;
+}
+.activity-bar{
+  position: relative;
+}
+.activity-bar image{
+  width: 750rpx;
+  height: 24vh;
+  z-index: 1;
+}
+.activity-bar .layer{
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  height: 24vh;
+  background: linear-gradient(to bottom, #5c9dba70 0%, #f2f2f230 80%);
+}
+.activity-bar .content{
+  position: absolute;
+  top: 0;
+  width: 750rpx;
+  height: 24vh;
+  z-index: 100;
+}
+.content .atitle{
+  color: #fff;
+  text-shadow: 2px 2px 2px #000;
+  font-size: 20px;
+  padding: 10px 20rpx ;
+}
+.content .btns{
+  display: flex;
+  justify-content: flex-end;
+}
+.map{
+  position: relative;
+}
+.map .atitle{
+  font-size: 18px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  text-shadow: 2px 2px 2px #fff;
+  color: #000;
+}
+.btns .abtn{
+  width: 80px;
+  font-size: 12px;
+  color: #fff;
+  background-color: #5c9dba;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 5px;
+  margin-right: 20px;
+  border: 1px solid #fff;
+}
+.btns .abtn2{
+  background-color: #b5594c;
+}
+.btns .abtn3{
+  background-color: #5d7db3;
+}
+.content .scount{
+  line-height: 30px;
+  color: #fff;
+  padding-right: 20px;
+  text-shadow: 2px 2px 2px #000;
+  float: right;
+  font-size: 14px;
+}
+.map image{
+  width: 750rpx;
+  height: 10vh;
+}
+.chat{
+  width: 730rpx;
+  margin: 0 10rpx;
+  height: 75vh;
+}
+.chat .loading{
+  font-size: 14px;
+  color: #888;
+  text-align: center;
+}
+.msg-item{
+  margin: 8px 5px;
+  padding: 5px 0;
+  width: 750rpx;
+  box-sizing: border-box;
+}
+.msg-item image{
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
+}
+.msg-item .image image{
+  width: 100px;
+  height: 80px;
+  border-radius: 5px;
+}
+.other .profile{
+  display: inline-block;
+  padding: 0 5px 0 0;
+  vertical-align: top;
+}
+.me .profile{
+  display: inline-block;
+  padding: 0 0 5px 5px;
+  vertical-align: top;
+}
+.me{
+  text-align: right;
+  float: right;
+}
+.me .msg{
+  background-color: #efcfc5;
+  color: #222;
+}
+.other .msg{
+  background-color: #5c9dba;
+  color: #fff;
+}
+.msg-item .content{
+  display: inline-block;
+}
+.msg-item .msg-time{
+  padding-bottom: 5px;
+  color: #333;
+  font-size: small;
+}
+.content .msg{
+  max-width: 450rpx;
+  border-radius: 5px;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+.editor{
+  padding: 2px 10rpx 2px 0;
+  border: 1px solid #86c7cc;
+  background-color: #fff;
+}
+.editor .inputer{
+  width: 580rpx;
+  display: inline-block;
+  height: 60px;
+  line-height: 24px;
+  box-sizing: border-box;
+  padding: 0 10rpx;
+  color: #666;
+  font-size: 12px;
+}
+.editor .btn{
+  float: right;
+  width: 125rpx;
+  text-align: right;
+}
+.input-dialog{
+  height: 380px;
+  padding-bottom: 10px;
+}
+.scroll-text {
+  margin-top: 32rpx;
+  max-height: 84vh;
+  min-height: 85vh;
+}

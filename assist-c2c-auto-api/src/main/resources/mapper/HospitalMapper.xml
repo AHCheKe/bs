@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.assist.dao.mapper.HospitalMapper">
+  <resultMap id="BaseResultMap" type="com.assist.dao.model.Hospital">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="hospital_id" jdbcType="INTEGER" property="hospitalId" />
+    <result column="hospital_name" jdbcType="VARCHAR" property="hospitalName" />
+    <result column="hospital_tags" jdbcType="VARCHAR" property="hospitalTags" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="main_pic" jdbcType="VARCHAR" property="mainPic" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
+    <result column="notice1" jdbcType="LONGVARCHAR" property="notice1" />
+    <result column="notice2" jdbcType="LONGVARCHAR" property="notice2" />
+  </resultMap>
+
+  <select id="selectHospitalById" resultMap="BaseResultMap">
+    select * from hospital h where h.hospital_id=#{hospitalId}
+  </select>
+</mapper>

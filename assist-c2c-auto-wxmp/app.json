@@ -1,0 +1,82 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/assist-info/service-list",
+    "pages/user/regist/regist",
+    "pages/assist-info/city",
+    "pages/assist-info/detail",
+    "pages/assist-info/publish",
+    "pages/assistant/assistant-list",
+    "pages/user/profile",
+    "pages/user/login/login",
+    "pages/user/info",
+    "pages/user/mycamp/camporders",
+    "pages/copper/cropper",
+    "pages/assistant/assistant-detail",
+    "pages/book/appointment",
+    "pages/book/myorders",
+    "pages/book/order-detail",
+    "pages/book/pay",
+    "pages/book/service-camp",
+    "pages/user/myservice/list",
+    "pages/user/myservice/service-camp",
+    "pages/home/notice-detail",
+    "pages/user/mytags",
+    "pages/user/history/feedback-list",
+    "pages/user/online-service/chat"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#88C9A0",
+    "navigationBarTitleText": "陪诊平台",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#000",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home-active.png"
+      },
+      {
+        "pagePath": "pages/assistant/assistant-list",
+        "text": "陪诊师",
+        "iconPath": "/images/assist.png",
+        "selectedIconPath": "/images/assist-active.png"
+      },
+      {
+        "pagePath": "pages/book/myorders",
+        "text": "我的订单",
+        "iconPath": "/images/order.png",
+        "selectedIconPath": "/images/order-active.png"
+      },
+      {
+        "pagePath": "pages/user/profile",
+        "text": "个人中心",
+        "iconPath": "/images/user.png",
+        "selectedIconPath": "/images/user-active.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index"
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于选择地址"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ]
+}

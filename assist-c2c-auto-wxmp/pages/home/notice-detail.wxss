@@ -1,0 +1,71 @@
+.note-list{
+  line-height: 28px;
+  padding: 0 3%;
+  color: #666;
+  box-sizing: border-box;
+}
+.note-list .desc{
+  color: #666;
+}
+.item .remark{
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #888;
+}
+.img-box{
+  box-sizing: border-box;
+  vertical-align: top;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 5vh;
+}
+.note-list .meta-data{
+  display: inline-block;
+  width: 54%;
+  padding-left: 4px;
+  box-sizing: border-box;
+}
+.note-list .pet-img{
+  width: 31%;
+  height: 100px;
+  margin-bottom: 10px;
+  margin: 0 1%;
+}
+.note-list .pet-title{
+  font-size: 16px;
+  color: #555;
+  font-weight: bold;
+}
+.note-list .item{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.note-list .tags van-tag{
+  margin-right: 8px;
+}
+.tags .file-cnt{
+  float: right;
+  font-size: 14px;
+}
+.tags{
+  clear: both;
+}
+.tags .advice{
+  float: right;
+  font-size: 14px;
+  color: #666;
+}
+.content_richText [src]{
+  max-width: 100%;
+  margin-top: 10px;
+}
+
+.content_richText{
+  margin-top: 8px;
+  padding-top: 8px;
+  padding-bottom: 10vh;
+  border-top: 1px solid #ccc;
+  font-size: 14px;
+}

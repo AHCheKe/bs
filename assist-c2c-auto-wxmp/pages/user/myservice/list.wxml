@@ -1,0 +1,31 @@
+<wxs src="../../../utils/date.wxs" module="filter" />
+<view class="fav-list">
+  <van-cell label="发布时间：{{filter.format(item.publishTime, 'YY-MM-DD hh:mm')}}" center wx:for="{{dataList.records}}" wx:key="campaignId">
+    <view slot="title">
+      <view class="van-cell-text title">
+        <view style="font-size: 16px;">
+          <text>{{item.hospital}}</text>
+          <view class="status">
+            <van-tag color="#FFA34D" wx:if="{{item.status==0}}" round size="medium">抢单中</van-tag>
+            <van-tag color="#457B9D" wx:if="{{item.status==1}}" round size="medium">待就诊</van-tag>
+            <van-tag color="#88C9A0" wx:if="{{item.status==2}}" round size="medium">已完成</van-tag>
+            <van-tag color="#D0D5DD" wx:if="{{item.status==-2}}" round size="medium">已取消</van-tag>
+          </view>
+        </view>
+        <!-- <view>
+          <text class="meta">发布时间：</text>{{filter.format(item.publishTime, 'YY-MM-DD hh:mm')}}
+        </view> -->
+        <view><text class="meta">就诊时间：</text>{{filter.format(item.serviceDate, 'YY-MM-DD hh:mm')}}</view>
+        <view class="content">
+          <text>{{item.serviceType}}</text>
+          <text class="cny">￥</text><text class="price">{{filter.toFixed1(item.price)}}</text>
+          <view class="btn" wx:if="{{item.status==0}}" bindtap="toCampList" data-sid="{{item.serviceId}}">
+            <van-button color="#41a8a8" size="small" icon="notes-o">抢单列表</van-button>
+          </view>
+        </view>
+      </view>
+      <view class="no-more" wx:if="{{dataList.length==0}}">——已全部加载——</view>
+      <!-- <van-button icon="star-o" color="#887bff">取消</van-button> -->
+    </view>
+  </van-cell>
+</view>
