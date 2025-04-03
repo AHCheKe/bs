@@ -11,7 +11,7 @@
  Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 31/03/2025 09:40:49
+ Date: 03/04/2025 09:53:43
 */
 
 SET NAMES utf8mb4;
@@ -30,12 +30,12 @@ CREATE TABLE `admin`  (
   `gender` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '性别',
   `status` int(0) NULL DEFAULT NULL COMMENT '状态：0-待审核；1-审核通过；2：冻结；-1：拒绝申请',
   PRIMARY KEY (`admin_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES (1, '18268812145', '123456', '轲', '2025-03-23 13:00:45', '女', 1);
+INSERT INTO `admin` VALUES (1, '18268812145', '123456', '轲', '2025-03-31 10:09:33', '女', 1);
 
 -- ----------------------------
 -- Table structure for certify
@@ -51,7 +51,7 @@ CREATE TABLE `certify`  (
   `certify_time` datetime(0) NULL DEFAULT NULL COMMENT '审核时间',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`certify_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of certify
@@ -111,7 +111,7 @@ CREATE TABLE `feedback`  (
   `rate` int(0) NULL DEFAULT NULL COMMENT '评分',
   `content` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '评价内容',
   PRIMARY KEY (`feedback_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of feedback
@@ -119,6 +119,55 @@ CREATE TABLE `feedback`  (
 INSERT INTO `feedback` VALUES (4, 29, 71, '2025-02-28 21:55:05', 8, 23, 5, '很好很好');
 INSERT INTO `feedback` VALUES (5, 34, 94, '2025-03-11 22:18:49', 8, 22, 5, '不错不错');
 INSERT INTO `feedback` VALUES (6, 35, 95, '2025-03-12 09:31:00', 8, 21, 3, '我觉得还行');
+
+-- ----------------------------
+-- Table structure for hospital
+-- ----------------------------
+DROP TABLE IF EXISTS `hospital`;
+CREATE TABLE `hospital`  (
+  `hospital_id` int(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `hospital_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '医院名称',
+  `hospital_tags` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '标签',
+  `city` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '所在城市',
+  `area` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '所在区县',
+  `main_pic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '主图',
+  `notice1` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '服务须知',
+  `notice2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '注意事项',
+  `tel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '联系电话',
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '地址',
+  `detail` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '详情',
+  PRIMARY KEY (`hospital_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of hospital
+-- ----------------------------
+INSERT INTO `hospital` VALUES (1, '杭州市第一人民医院', '三级甲等综合医院', '杭州市', '上城区', 'http://129.211.222.131:18080/images/20250107/142617dhgim.jpg', '1、初诊、复诊（看结果）、咨询、开药等均须挂号，采取实名制挂号，同时购买《门诊医疗手册》，医保患者注意出示医保卡，挂号为当日当次有效。\n\n挂号地点(一部）：普通门诊、专家门诊在一楼门诊大厅，眼科门诊独立挂号；二部、三部挂号地点都在二楼。每次复诊时应带《门诊医疗手册》（全市通用）、我院或外院的检查结果，以供医生参考，减少不必要的检查。\n\n2、挂号时间：\n\n上午：07:15~11:30', '1、取号时间为当日上午9:30前，下午14:30前。逾时视为自动放弃预约挂号。\n2、您须在预约时间内到一楼、二楼各挂号窗口取号，取号时必须出示与预约时相符的有效证件。\n3、如因事不能如期前来就诊，请您提前一天通知预约接待处。三次无故放弃预约的患者视为违约，您将不再有下次预约机会。\n4、预约时请您留下准确的联系方式，以便专家出诊时间有变，及时与您沟通。', '0411-3829143', '浣纱路261号', '创建于1923年，是杭州市政府及爱国人士自筹资金建立的首家综合性医院。医院年均门诊量超过200万人次，开放床位1200张。');
+INSERT INTO `hospital` VALUES (2, '浙江大学医学院附属第一医院', '三级甲等综合医院', '杭州市', '上城区', 'http://129.211.222.131:18080/images/20250110/092342e9s76.jpg', '中心位于杭州市区体育新城规划一号路1号、3号，交通便利，距离后盐高速口5公里，大连北站4公里，与市体育中心隔路相望。乘坐518路、907路公交车在妇女儿童医疗中心站直达。停车场可充分满足停车需求。', '中心拥有一大批先进的医疗仪器设备：国内先进的核磁共振(MRI) 、西门子64层螺旋CT、西门子Ysio数字X光机、西门子乳腺钼靶机、双人用体外授精工作站、胚胎发育24小时监测的活细胞成像系统、遗传分析仪', '0411-66861111', '城站路58号', '该医院创建于1947年，是浙江大学创建的首家附属医院，秉持“严谨求实 卓越创新 国际一流”的发展理念，以综合实力雄厚、医疗质量过硬、学科特色鲜明享誉海内外');
+INSERT INTO `hospital` VALUES (3, '浙江大学医学院附属邵逸夫医院', '公立综合性三级甲等医院', '杭州市', '上城区', 'http://129.211.222.131:18080/images/20250116/223222azfp0.jpg', '预约挂号：为减少您的等待时间，建议通过医院官方网站、微信公众号、电话热线或自助挂号机提前预约挂号。请按照预约时间准时到达，过时需重新排队或另约。\n携带证件：就诊时请务必携带有效身份证件（如身份证、医保卡、社保卡等），以便办理挂号、结算及医保报销手续。\n个人防护：疫情期间，请您全程佩戴口罩，保持社交距离，配合体温检测，并主动出示健康码或行程码。如有发热、咳嗽等症状，请直接前往发热门诊就诊。', '费用结算：支持现金、银行卡、支付宝、微信等多种支付方式。医保患者请携带医保卡，以便直接结算报销部分费用。\n保持安静：医院是公共场所，请保持安静，尊重其他患者，避免大声喧哗，共同维护良好的就医环境。\n特殊需求：如有行动不便、听力视力障碍等特殊需求，请及时告知工作人员，我们将尽力提供必要的帮助。\n意见反馈：您的满意是我们工作的动力。就诊结束后，欢迎通过医院意见箱、官方网站或客服热线对我们的服务提出宝贵意见。', '0411-84625234', '庆春东路3号', '邵逸夫医院由香港知名实业家邵逸夫爵士捐资并与浙江省人民政府配套建设，集医疗、教学和科研为一体。');
+INSERT INTO `hospital` VALUES (4, '浙江省人民医院', '大型综合性三级甲等医院', '杭州市', '下城区', 'http://129.211.222.131:18080/images/20250116/223537f3q4w.jpg', '预约挂号：为减少您的等待时间，建议通过医院官方网站、微信公众号、电话热线或自助挂号机提前预约挂号。请按照预约时间准时到达，过时需重新排队或另约。\n携带证件：就诊时请务必携带有效身份证件（如身份证、医保卡、社保卡等），以便办理挂号、结算及医保报销手续。\n个人防护：疫情期间，请您全程佩戴口罩，保持社交距离，配合体温检测，并主动出示健康码或行程码。如有发热、咳嗽等症状，请直接前往发热门诊就诊。', '费用结算：支持现金、银行卡、支付宝、微信等多种支付方式。医保患者请携带医保卡，以便直接结算报销部分费用。\n保持安静：医院是公共场所，请保持安静，尊重其他患者，避免大声喧哗，共同维护良好的就医环境。\n特殊需求：如有行动不便、听力视力障碍等特殊需求，请及时告知工作人员，我们将尽力提供必要的帮助。\n意见反馈：您的满意是我们工作的动力。就诊结束后，欢迎通过医院意见箱、官方网站或客服热线对我们的服务提出宝贵意见。', '0411-39062999', '上塘路158号', '浙江省人民医院成立于1984年，是浙江省卫生健康委直属的大型综合性三级甲等医院，学科齐全、设备先进、技术雄厚，享有很高的省内乃至全国声誉');
+INSERT INTO `hospital` VALUES (5, '杭州市中医院', '综合三级甲等综合医院', '杭州市', '下城区', 'http://129.211.222.131:18080/images/20250116/223537f3q4w.jpg', '预约挂号：为减少您的等待时间，建议通过医院官方网站、微信公众号、电话热线或自助挂号机提前预约挂号。请按照预约时间准时到达，过时需重新排队或另约。\n携带证件：就诊时请务必携带有效身份证件（如身份证、医保卡、社保卡等），以便办理挂号、结算及医保报销手续。\n个人防护：疫情期间，请您全程佩戴口罩，保持社交距离，配合体温检测，并主动出示健康码或行程码。如有发热、咳嗽等症状，请直接前往发热门诊就诊。', '费用结算：支持现金、银行卡、支付宝、微信等多种支付方式。医保患者请携带医保卡，以便直接结算报销部分费用。\n保持安静：医院是公共场所，请保持安静，尊重其他患者，避免大声喧哗，共同维护良好的就医环境。\n特殊需求：如有行动不便、听力视力障碍等特殊需求，请及时告知工作人员，我们将尽力提供必要的帮助。\n意见反馈：您的满意是我们工作的动力。就诊结束后，欢迎通过医院意见箱、官方网站或客服热线对我们的服务提出宝贵意见。', '0411-39062999', '体育场路453号', '杭州市中医院创建于1952年5月，是华东地区较早建立的医院之一，历经近七十年砥砺前行，目前已发展成为一家集医疗、教学、科研、预防、保健、康复于一体的综合性三级甲等中医院，也是浙江中医药大学附属广兴医院和杭州师范大学附属杭州市中医院。');
+
+-- ----------------------------
+-- Table structure for message
+-- ----------------------------
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE `message`  (
+  `msg_id` int(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `sender_id` int(0) NULL DEFAULT NULL COMMENT '小程序用户ID',
+  `admin_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '管理员标识',
+  `send_time` datetime(0) NULL DEFAULT NULL COMMENT '发送时间',
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '消息内容',
+  PRIMARY KEY (`msg_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of message
+-- ----------------------------
+INSERT INTO `message` VALUES (43, 31, 'user', '2025-03-31 09:44:02', '如果病人要求线下支付怎么办？');
+INSERT INTO `message` VALUES (44, 31, 'admin', '2025-03-31 09:49:28', '病人支付完后要把支付记录回传给平台');
+INSERT INTO `message` VALUES (45, 8, 'user', '2025-04-02 08:03:34', '你好，我有点事情想咨询一下');
+INSERT INTO `message` VALUES (46, 8, 'admin', '2025-04-02 08:03:59', '什么事情想咨询呢？');
 
 -- ----------------------------
 -- Table structure for notice
@@ -168,7 +217,7 @@ CREATE TABLE `service_need`  (
   `lat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '纬度',
   `lng` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '经度',
   PRIMARY KEY (`service_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 95 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 96 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of service_need
@@ -220,8 +269,6 @@ CREATE TABLE `service_order`  (
 -- ----------------------------
 -- Records of service_order
 -- ----------------------------
-INSERT INTO `service_order` VALUES (22, 53, 55, 2, 34, '2025-02-13 11:01:35', '2025-02-12 18:47:06', NULL, 260, 0, NULL, NULL, NULL);
-INSERT INTO `service_order` VALUES (23, 54, 55, 2, 28, '2025-02-13 11:15:46', '2025-02-13 18:47:15', NULL, 200, 0, '2025-02-17 09:00:00', NULL, '054064');
 INSERT INTO `service_order` VALUES (24, 55, 3, 1, 28, '2025-02-26 09:40:59', '2025-02-14 09:43:46', NULL, 280, 1, '2025-03-27 09:00:00', NULL, '149714');
 INSERT INTO `service_order` VALUES (25, 56, 19, 1, 28, '2025-02-26 10:02:39', '2025-02-18 18:47:39', NULL, 120, 0, '2025-03-28 11:00:00', NULL, '399090');
 INSERT INTO `service_order` VALUES (26, 57, 19, 2, 28, '2025-02-26 11:43:07', '2025-02-19 18:47:46', NULL, 432, 0, NULL, NULL, NULL);
@@ -270,7 +317,7 @@ CREATE TABLE `slide_pic`  (
 -- Records of slide_pic
 -- ----------------------------
 INSERT INTO `slide_pic` VALUES (1, 'http://129.211.222.131:18080/images/20250204/113139agm7a.jpg', 1, '', '');
-INSERT INTO `slide_pic` VALUES (2, 'http://129.211.222.131:18080/images/20250110/113310z56r9.jpg', 5, '', '');
+INSERT INTO `slide_pic` VALUES (2, 'http://129.211.222.131:18080/images/20250110/113310z56r9.jpg', 3, '', '');
 INSERT INTO `slide_pic` VALUES (3, 'http://129.211.222.131:18080/images/20250110/113325l5cqq.jpg', 2, '', '');
 
 -- ----------------------------
@@ -282,13 +329,13 @@ CREATE TABLE `tag`  (
   `tag_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '标签名称',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注说明',
   PRIMARY KEY (`tag_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tag
 -- ----------------------------
-INSERT INTO `tag` VALUES (1, '沉稳冷静', '性格沉稳');
-INSERT INTO `tag` VALUES (2, '开朗外向', '性格开朗型');
+INSERT INTO `tag` VALUES (1, '沉稳冷静', '要求：沉着冷静，给予患者安全感');
+INSERT INTO `tag` VALUES (2, '开朗外向', '要求：擅长交流，主动沟通，提供情绪价值');
 INSERT INTO `tag` VALUES (3, '温和耐心', '');
 INSERT INTO `tag` VALUES (4, '安静敏感', '');
 INSERT INTO `tag` VALUES (5, '无障碍沟通', '会手语');
@@ -302,7 +349,7 @@ CREATE TABLE `user`  (
   `mobile` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号',
   `open_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '微信的openid',
   `role` int(0) NULL DEFAULT NULL COMMENT '角色：1-病人；2-陪诊师',
-  `status` int(0) NULL DEFAULT NULL COMMENT '状态：1-正常；2-已实名；-1已注销',
+  `status` int(0) NULL DEFAULT NULL COMMENT '状态：1-正常；-1已禁用',
   `location` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '所在城市',
   `pic` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '头像图片',
   `nick_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '昵称',
@@ -329,7 +376,7 @@ INSERT INTO `user` VALUES (4, '13800138004', 'temp', 1, 1, '杭州市拱墅区�
 INSERT INTO `user` VALUES (5, '13800138005', 'temp', 1, 1, '杭州市余杭区文一西路202号', 'https://images.pexels.com/photos/11279931/pexels-photo-11279931.jpeg?auto=compress&cs=tinysrgb&w=800', '小鹿', '女', 30, '330104200001034567', '林鹿', NULL, NULL, NULL, NULL, '30.298953', '120.178551');
 INSERT INTO `user` VALUES (6, '13800138006', 'temp', 1, 1, '杭州市萧山区市心路303号', 'https://images.pexels.com/photos/16577560/pexels-photo-16577560.jpeg?auto=compress&cs=tinysrgb&w=800', '大山', '男', 70, '330105198801045678', '张大山', NULL, NULL, NULL, NULL, '30.304555', '120.048107');
 INSERT INTO `user` VALUES (7, '13800138007', 'temp', 1, 1, '杭州市富阳区桂花路404号', 'https://images.unsplash.com/photo-1558339136-3b4e87294276?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fCVFNCVCQSVCQSVFNyU4OSVBOXxlbnwwfHwwfHx8MA%3D%3D', '小蜜蜂', '女', 25, '330106199201056789', '杨蜜', NULL, NULL, NULL, NULL, '30.298711', '120.178051');
-INSERT INTO `user` VALUES (8, '13800138008', 'temp', 1, 1, '杭州市临安区青山湖路505号', 'https://images.pexels.com/photos/2173872/pexels-photo-2173872.jpeg?auto=compress&cs=tinysrgb&w=800', '虎子', '男', 40, '330107195201067890', '王虎', NULL, NULL, NULL, NULL, '30.304555', '120.048217');
+INSERT INTO `user` VALUES (8, '13800138008', 'oufmM6wZMYvPwvdDQzwF7HhKrlH8', 1, 1, '杭州市临安区青山湖路505号', 'https://images.pexels.com/photos/2173872/pexels-photo-2173872.jpeg?auto=compress&cs=tinysrgb&w=800', '虎子', '男', 40, '330107195201067890', '王虎', NULL, NULL, NULL, NULL, '30.304555', '120.048217');
 INSERT INTO `user` VALUES (9, '13800138009', 'temp', 1, 1, '杭州市江干区下沙路606号', 'https://images.pexels.com/photos/2599509/pexels-photo-2599509.jpeg?auto=compress&cs=tinysrgb&w=800', '帅锅', '男', 18, '330108199701078901', '刘帅', NULL, NULL, NULL, NULL, '30.300158', '120.176207');
 INSERT INTO `user` VALUES (10, '13800138010', 'temp', 1, 1, '杭州市淳安县千岛湖路707号', 'https://images.pexels.com/photos/27680249/pexels-photo-27680249.jpeg?auto=compress&cs=tinysrgb&w=800', '老陈', '男', 55, '330109198201089012', '陈大海', NULL, NULL, NULL, NULL, '30.300128', '120.176296');
 INSERT INTO `user` VALUES (11, '13800138011', 'temp', 1, 1, '杭州市桐庐县迎春路808号', 'https://images.pexels.com/photos/2624077/pexels-photo-2624077.jpeg?auto=compress&cs=tinysrgb&w=800', '小辣椒', '女', 27, '330110200501090123', '胡辣', NULL, NULL, NULL, NULL, '30.300118', '120.176096');
@@ -341,7 +388,7 @@ INSERT INTO `user` VALUES (16, '13800138016', 'temp', 1, 1, '杭州市拱墅区�
 INSERT INTO `user` VALUES (17, '13800138017', 'temp', 1, 1, '杭州市余杭区良渚路1414号', NULL, '小狐狸', '女', 26, '330116199901156789', '胡丽', NULL, NULL, NULL, NULL, '30.292286', '120.173647');
 INSERT INTO `user` VALUES (18, '13800138018', 'temp', 1, 1, '杭州市萧山区人民路1515号', NULL, '老鹰', '男', 50, '330117198301167890', '高飞', NULL, NULL, NULL, NULL, '30.299524', '120.170714');
 INSERT INTO `user` VALUES (19, '13800138019', 'temp', 1, 1, '杭州市富阳区富春路1616号', NULL, '小蝴蝶', '女', 21, '330118199701178901', '胡蝶', NULL, NULL, NULL, NULL, '30.232524', '120.152714');
-INSERT INTO `user` VALUES (20, '13800138020', 'temp', 1, 2, '杭州市临安区锦城路1717号', NULL, '大狗', '男', 42, '330119197301189012', '汪旺', NULL, NULL, NULL, NULL, '30.290524', '120.192714');
+INSERT INTO `user` VALUES (20, '13800138020', 'temp', 1, -1, '杭州市临安区锦城路1717号', NULL, '大狗', '男', 42, '330119197301189012', '汪旺', NULL, NULL, NULL, NULL, '30.290524', '120.192714');
 INSERT INTO `user` VALUES (21, '13800238001', 'temp', 2, 1, '杭州市西湖区文二路101号', 'https://images.pexels.com/photos/654696/pexels-photo-654696.jpeg?auto=compress&cs=tinysrgb&w=800', '贴心小张', '女', 24, '330102199301012345', '张小丽', '细心周到，擅长接送服务。', 3, 122, '提供接送，细心', '30.292024', '120.178714');
 INSERT INTO `user` VALUES (22, '13800238002', 'temp', 2, 1, '杭州市上城区解放路202号', 'https://images.pexels.com/photos/30858160/pexels-photo-30858160.jpeg?auto=compress&cs=tinysrgb&w=800', '老李陪诊', '男', 40, '330103196801023456', '李强', '经验丰富，擅长老年患者陪诊。', 5, 97, '经验丰富，耐心', '30.121841', '120.259523');
 INSERT INTO `user` VALUES (23, '13800238003', 'temp', 2, 1, '杭州市滨江区江南大道303号', 'https://images.pexels.com/photos/3936894/pexels-photo-3936894.jpeg?auto=compress&cs=tinysrgb&w=800', '小雨陪护', '女', 25, '330104199801034567', '赵小雨', '温柔细心，擅长儿童陪诊。', 5, 152, '温柔，儿童陪诊', '30.12141', '120.25953');
@@ -352,7 +399,7 @@ INSERT INTO `user` VALUES (27, '13800238007', 'temp', 2, 1, '杭州市富阳区�
 INSERT INTO `user` VALUES (28, '13800238008', 'temp', 2, 1, '杭州市临安区青山湖路808号', 'https://images.pexels.com/photos/3394657/pexels-photo-3394657.jpeg?auto=compress&cs=tinysrgb&w=800', '大猫陪诊', '男', 35, '330109198201089012', '王大猫', '细心耐心，擅长术后陪诊。', 4.3, 100, '术后陪诊，细心', '30.18643', '120.27157');
 INSERT INTO `user` VALUES (29, '13800238009', 'temp', 2, 1, '杭州市江干区下沙路909号', 'https://images.pexels.com/photos/3209624/pexels-photo-3209624.jpeg?auto=compress&cs=tinysrgb&w=800', '小兔子陪护', '女', 22, '330110200001090123', '刘小兔', '温柔细心，擅长儿童陪诊。', 4.3, 90, '儿童陪诊，温柔', '30.18543', '120.2057');
 INSERT INTO `user` VALUES (30, '13800238010', 'temp', 2, 1, '杭州市淳安县千岛湖路1010号', NULL, '老陈陪诊', '男', 27, '330111196301101234', '陈大志', '经验丰富，擅长老年患者陪诊。', 4.1, 115, '老年陪诊，耐心', '30.274', '119.989318');
-INSERT INTO `user` VALUES (31, '13800238011', 'oufmM6wZMYvPwvdDQzwF7HhKrlH8', 2, 1, '杭州市桐庐县迎春路1111号', NULL, '小辣椒陪护', '女', 28, '330112199401112345', '胡小辣', '热情细心，擅长心理疏导。', 4, 125, '心理疏导，热情', '30.27452', '119.989118');
+INSERT INTO `user` VALUES (31, '13800238011', 'temp', 2, 1, '杭州市桐庐县迎春路1111号', NULL, '小辣椒陪护', '女', 28, '330112199401112345', '胡小辣', '热情细心，擅长心理疏导。', 4, 125, '心理疏导，热情', '30.27452', '119.989118');
 INSERT INTO `user` VALUES (32, '13800238012', 'temp', 2, 1, '杭州市建德市新安江路1212号', NULL, '大鸟陪诊', '男', 24, '330113197501123456', '赵大鸟', '细心耐心，擅长术后陪诊。', 3.9, 105, '术后陪诊，细心', '30.27499', '119.989318');
 INSERT INTO `user` VALUES (33, '13800238013', 'temp', 2, 1, '杭州市西湖区天目山路1313号', NULL, '小鹿斑比陪护', '女', 23, '330114200001134567', '鹿小鹿', '温柔细心，擅长儿童陪诊。', 3.5, 160, '儿童陪诊，温柔', '30.27401', '119.989118');
 INSERT INTO `user` VALUES (34, '13800238014', 'temp', 2, 1, '杭州市上城区延安路1414号', NULL, '老马陪诊', '男', 33, '330115196001145678', '马大志', '经验丰富，擅长老年患者陪诊。', 3.3, 85, '老年陪诊，耐心', '22.93772', '113.38424');
@@ -372,7 +419,7 @@ CREATE TABLE `user_tag`  (
   `tag_id` int(0) NULL DEFAULT NULL COMMENT '标签ID',
   `validate` int(0) NULL DEFAULT NULL COMMENT '审核结果',
   PRIMARY KEY (`user_tag_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 80 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 81 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_tag
